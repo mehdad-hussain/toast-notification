@@ -1,0 +1,90 @@
+.toast {
+  background-color: #000;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 500;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  position: fixed;
+  bottom: 1rem;
+  left: 1rem;
+  z-index: 999;
+  animation: slideIn 0.5s ease-in-out;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.toast__close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: #fff;
+  font-weight: 500;
+}
+
+.toast__close:hover {
+  color: #ccc;
+}
+
+.toast_message {
+  margin-bottom: 0.5rem;
+}
+
+.btn__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn {
+  background-color: #000;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 0.3rem;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn__success {
+  background-color: #000;
+}
+
+.btn__success:hover {
+  background-color: #333;
+}
+
+.btn__error {
+  background-color: #000;
+}
+
+.btn__error:hover {
+  background-color: #333;
+}
+
+.btn__warning {
+  background-color: #000;
+}
+
+.btn__warning:hover {
+  background-color: #333;
+}
+
+.btn__info {
+  background-color: #000;
+}
+
+.btn__info:hover {
+  background-color: #333;
+}

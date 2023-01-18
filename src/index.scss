@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  h1 {
+    @apply text-5xl;
+  }
+  h2 {
+    @apply text-4xl;
+  }
+  h3 {
+    @apply text-3xl;
+  }
+  h4 {
+    @apply text-2xl;
+  }
+  h5 {
+    @apply text-xl;
+  }
+  h6 {
+    @apply text-lg;
+  }
+  a {
+    // @apply text-blue-600 underline;
+    @apply cursor-pointer text-blue-600 no-underline;
+  }
+}
+
+@layer components {
+  // section: card styles
+  .card {
+    @apply p-4 rounded shadow-md xsM:w-64 smM:w-[24rem] mdM:w-[28rem] lgM:w-[32rem] xlM:w-[36rem] 2xlM:w-[40rem] w-[46rem];
+  }
+
+  // section: buttons styles
+  .btn {
+    @apply py-3 px-4 rounded-md transition-colors duration-200 ease-in-out;
+  }
+  .btn-pill {
+    @apply py-3 px-4 rounded-full transition-colors duration-200 ease-in-out;
+  }
+
+  .btn-outline {
+    @apply bg-transparent py-3 px-4 border hover:border-transparent rounded-md transition-colors duration-200 ease-in-out;
+  }
+
+  .btn-outline-pill {
+    @apply bg-transparent py-3 px-4 border hover:border-transparent rounded-full transition-colors duration-200 ease-in-out;
+  }
+
+  // section: card attributes radio buttons styles
+  .btn-radio {
+    @apply flex items-center justify-center bg-gray-100 rounded-md w-9 h-9 text-slate-700 peer-checked:font-semibold peer-checked:bg-slate-900 peer-checked:text-white;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
