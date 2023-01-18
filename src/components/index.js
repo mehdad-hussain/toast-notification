@@ -1,4 +1,5 @@
-import Rating from "./rating/Rating";
-import Tooltip from "./tooltip/Tooltip";
+export * from "./rating/Rating";
+export * from "./tooltip/Tooltip";
+export * from "./toastPortal/ToastPortal";
 
-export { Rating, Tooltip };
+// export { Rating, Tooltip, ToastPortal };

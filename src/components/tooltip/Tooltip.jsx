@@ -1,7 +1,8 @@
 import { TriangleIcon } from "assets";
+import { joinClasses } from "util";
 import "./Tooltip.scss";
 
-const Tooltip = (props) => {
+export const Tooltip = (props) => {
   let { tooltipText, children, position, textColor, bgColor, opacity, fill } =
     props;
 
@@ -28,15 +29,11 @@ const Tooltip = (props) => {
   const tooltipArrowLeft = `-translate-y-1/2 rotate-90 top-1/2 -right-2`;
   const tooltipArrowRight = `-translate-y-1/2 -rotate-90 top-1/2 -left-2`;
 
-  const classNames = (...params) => {
-    return params.filter(Boolean).join(" ");
-  };
-
   return (
     <>
       <div className={tooltipContainerClasses}>
         <span
-          className={classNames(
+          className={joinClasses(
             tooltipClasses,
             textColor,
             bgColor,
@@ -52,7 +49,7 @@ const Tooltip = (props) => {
         >
           {tooltipText}
           <TriangleIcon
-            className={classNames(
+            className={joinClasses(
               "absolute w-2.5 h-2.5 -z-10",
               fill,
               position === "top"
@@ -71,4 +68,4 @@ const Tooltip = (props) => {
   );
 };
 
-export default Tooltip;
+// export default Tooltip;

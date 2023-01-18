@@ -4,7 +4,7 @@ import { EyeIcon, HeartIcon, RefreshIcon, PlusIcon, } from "@heroicons/react/24/
 import { HeartIcon as HeartIconSolid } from "@heroicons/react/24/solid";
 
 import styles from "./App.module.scss";
-import { Tooltip } from "components";
+import { ToastPortal, Tooltip } from "components";
 
 function App() {
   const [toast, setToast] = useState(false);
@@ -65,16 +65,19 @@ function App() {
         </button>
       </div>
 
-      <Tooltip
-        tooltipText="Wishlist"
-        position="right"
-        bgColor="bg-black"
-        fill="fill-black"
-        opacity="opacity-60"
-      >
-        <HeartIcon className="w-6 h-6 stroke-1 stroke-gray-500 hover:stroke-red-500" />
-        <HeartIconSolid className="hidden w-6 h-6" />
-      </Tooltip>
+      <div className="mx-auto w-96">
+        <Tooltip
+          tooltipText="Wishlist"
+          position="right"
+          bgColor="bg-black"
+          fill="fill-black"
+          opacity="opacity-60"
+        >
+          <HeartIcon className="w-6 h-6 stroke-1 stroke-gray-500 hover:stroke-red-500" />
+          <HeartIconSolid className="hidden w-6 h-6" />
+        </Tooltip>
+      </div>
+      <ToastPortal />
     </>
   );
 }

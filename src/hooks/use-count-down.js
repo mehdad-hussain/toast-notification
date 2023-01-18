@@ -75,7 +75,6 @@ export function useCountdown(countdownOption) {
   //     isIncrement = countdownOption.isIncrement
   //   } else {
 
-  // eslint-disable-next-line @typescript-eslint/no-extra-semi
   ({ countStart, intervalMs, isIncrement, countStop } = countdownOption);
   //   }
 

@@ -3,7 +3,7 @@ import { StarIcon } from "@heroicons/react/solid";
 
 import "./Rating.module.scss";
 
-const Rating = ({ value, text }) => {
+export const Rating = ({ value, text }) => {
   //  <!-- idea: rest operator as parameter -->
   const classNames = (...classes) => {
     console.log(classes);
@@ -64,4 +64,4 @@ const Rating = ({ value, text }) => {
   );
 };
 
-export default Rating;
+// export default Rating;
