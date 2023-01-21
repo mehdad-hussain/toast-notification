@@ -1,0 +1,54 @@
+.toast {
+  @apply bg-white p-4 max-w-[450px] rounded-2xl shadow-lg cursor-pointer font-medium grid grid-cols-7 items-center relative overflow-hidden;
+
+  &--success {
+    @apply border border-green-400 bg-green-100;
+  }
+
+  &--error {
+    @apply border border-red-400 bg-red-200/50;
+  }
+  &--warning {
+    @apply border border-orange-300 bg-orange-100;
+  }
+  &--info {
+    @apply border border-blue-400 bg-blue-100;
+  }
+
+  &__content {
+    @apply text-gray-600 text-base col-span-5;
+  }
+
+  &__close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+  &__close:hover {
+    color: red;
+  }
+
+  &__close:active {
+    color: green;
+  }
+
+  &__close:focus {
+    outline: none;
+  }
+
+  &__close:disabled {
+    color: #ccc;
+  }
+
+  &__close:disabled:hover {
+    color: #ccc;
+  }
+
+  &__close:disabled:active {
+    color: #ccc;
+  }
+}

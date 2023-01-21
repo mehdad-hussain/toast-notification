@@ -4,8 +4,16 @@ import ReactDOM from "react-dom";
 import { useToastPortal } from "hooks";
 
 import styles from "./ToastPortal.module.scss";
+import { Toast } from "components";
 
 export const ToastPortal = () => {
+  const [toasts, setToasts] = useState([
+    {
+      id: 1,
+      message: "Toast 1 successful message",
+      mode: "warning",
+    },
+  ]);
   const { loaded, portalId } = useToastPortal();
 
   console.log("Toast Portal rendered");
@@ -13,8 +21,9 @@ export const ToastPortal = () => {
   return loaded ? (
     ReactDOM.createPortal(
       <div className={styles.toastContainer}>
-        {/* <Toast /> */}
-        toast portal
+        {toasts.map((toast) => (
+          <Toast key={toast.id} message={toast.message} mode={toast.mode} />
+        ))}
       </div>,
       document.getElementById(portalId)
     )
