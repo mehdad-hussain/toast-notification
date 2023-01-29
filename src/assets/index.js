@@ -2,5 +2,15 @@
 import DashboardIcon from "./icons/DashboardIcon";
 import ProductIcon from "./icons/ProductIcon";
 import TriangleIcon from "./icons/TriangleIcon";
+import CheckCircleIcon from "./icons/CheckCircleIcon";
+import ExclamationCircleIcon from "./icons/ExclamationCircleIcon";
+import InformationCircleIcon from "./icons/InformationCircleIcon";
 
-export { ProductIcon, DashboardIcon, TriangleIcon };
+export {
+  ProductIcon,
+  DashboardIcon,
+  TriangleIcon,
+  CheckCircleIcon,
+  ExclamationCircleIcon,
+  InformationCircleIcon,
+};

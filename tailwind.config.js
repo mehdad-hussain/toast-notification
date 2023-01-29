@@ -4,6 +4,16 @@ module.exports = {
   mode: "jit",
   corePlugins: {},
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  safelist: [
+    "before:animate-[progress_10s_linear_forwards]",
+    "before:animate-[progress_9s_linear_forwards]",
+    "before:animate-[progress_8s_linear_forwards]",
+    "before:animate-[progress_7s_linear_forwards]",
+    "before:animate-[progress_6s_linear_forwards]",
+    "before:animate-[progress_5s_linear_forwards]",
+    "before:animate-[progress_4s_linear_forwards]",
+    "before:animate-[progress_3s_linear_forwards]",
+  ],
   theme: {
     extend: {
       container: {
@@ -169,6 +179,11 @@ module.exports = {
           "100%": {
             opacity: "0",
             top: "-20px",
+          },
+        },
+        progress: {
+          "100%": {
+            right: "100%",
           },
         },
       },

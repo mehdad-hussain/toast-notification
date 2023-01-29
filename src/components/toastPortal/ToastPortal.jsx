@@ -22,7 +22,12 @@ export const ToastPortal = () => {
     ReactDOM.createPortal(
       <div className={styles.toastContainer}>
         {toasts.map((toast) => (
-          <Toast key={toast.id} message={toast.message} mode={toast.mode} />
+          <Toast
+            key={toast.id}
+            message={toast.message}
+            mode={toast.mode}
+            timer={3}
+          />
         ))}
       </div>,
       document.getElementById(portalId)
