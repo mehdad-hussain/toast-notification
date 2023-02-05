@@ -10,7 +10,7 @@ export const ToastContext = React.createContext();
 function App() {
   const toast = useRef(null);
 
-  console.log("toast", toast.current);
+  console.log("toast----", toast.current);
 
   return (
     <>

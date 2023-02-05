@@ -71,6 +71,9 @@ export const ToastPortal = forwardRef((props, ref) => {
         },
       ]);
     },
+    clear: () => {
+      setToasts([]);
+    },
   }));
 
   return loaded ? (
