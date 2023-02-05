@@ -1,17 +1,13 @@
 // prettier-ignore
 import {  XMarkIcon } from "@heroicons/react/24/solid";
-import React from "react";
 
-import {
-  CheckCircleIcon,
-  ExclamationCircleIcon,
-  InformationCircleIcon,
-} from "assets";
+// prettier-ignore
+import { CheckCircleIcon, ExclamationCircleIcon, InformationCircleIcon, } from "assets";
 import { joinClasses } from "util";
 
 import styles from "./Toast.module.scss";
 
-export const Toast = ({ mode, onClose, message, timer = 5 }) => {
+export const Toast = ({ mode, onClose, message, isAutoClose, timer = 5 }) => {
   const classes = joinClasses(styles.toast, styles[`toast-${mode}`]);
 
   const progressClasses = joinClasses(
@@ -19,10 +15,6 @@ export const Toast = ({ mode, onClose, message, timer = 5 }) => {
     styles[`toast__progress-${mode}`],
     `before:animate-[progress_${timer}s_linear_forwards]`
   );
-
-  const handleOnClose = () => {
-    onClose();
-  };
 
   return (
     <>
@@ -49,10 +41,13 @@ export const Toast = ({ mode, onClose, message, timer = 5 }) => {
         <div className={styles.toast__content}>
           <p className="ml-2 line-clamp-4">{message}</p>
         </div>
-        <button className="justify-self-end">
+        <button onClick={onClose} className="justify-self-end">
           <XMarkIcon className="w-6 h-6 stroke-2 fill-gray-600" />
         </button>
-        <div className={joinClasses(progressClasses)}></div>
+
+        {isAutoClose === true ? (
+          <div className={joinClasses(progressClasses)}></div>
+        ) : null}
       </div>
     </>
   );
