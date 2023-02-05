@@ -1,18 +1,16 @@
 import React from "react";
 import { joinClasses } from "util";
 
-export const BtnOutline = ({
-  children,
-  bgColor,
-  textColor,
-  size,
-  borderRadius,
-}) => {
-  let Size = size ? size : "px-6 py-2";
+export const BtnOutline = (props) => {
+  let { children, bgColor, text, padding, borderRadius } = props;
+
+  let Padding = padding ? padding : "px-6 py-2";
 
   let BgColor = bgColor ? bgColor : "bg-zinc-500";
 
-  let TextColor = textColor ? textColor : "text-zinc-500";
+  let Text = text
+    ? text
+    : "text-zinc-500  font-semibold text-sm uppercase tracking-wide";
 
   let BorderRadius = borderRadius ? borderRadius : "rounded";
 
@@ -28,9 +26,12 @@ export const BtnOutline = ({
   let activeBgColor = color === "amber" ? "active:bg-amber-600" : color === "slate" ? "active:bg-slate-600" : color === "gray" ? "active:bg-gray-600" : color === "red" ? "active:bg-red-600" : color === "green" ? "active:bg-green-600" : color === "blue" ? "active:bg-blue-600" : color === "indigo" ? "active:bg-indigo-600" : color === "purple" ? "active:bg-purple-600" : color === "pink" ? "active:bg-pink-600" : color === "neutral" ? "active:bg-neutral-600" : color === "stone" ? "active:bg-stone-600" : color === "orange" ? "active:bg-orange-600" : color === "yellow" ? "active:bg-yellow-600" : color === "lime" ? "active:bg-lime-600" : color === "teal" ? "active:bg-teal-600" : color === "cyan" ? "active:bg-cyan-600" : color === "sky" ? "active:bg-sky-600" : color === "violet" ? "active:bg-violet-600" : color === "fuchsia" ? "active:bg-fuchsia-600" : color === "rose" ? "active:bg-rose-600" : "active:bg-zinc-600";
 
   let classes = joinClasses(
-    " border outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 font-bold uppercase hover:text-white",
-    Size,
-    TextColor,
+    "border outline-none focus:outline-none",
+    "mr-1 mb-1",
+    "ease-linear transition-all duration-150",
+    "hover:text-white",
+    Padding,
+    Text,
     BorderRadius,
     hoverBgColor,
     activeBgColor,
@@ -39,5 +40,9 @@ export const BtnOutline = ({
 
   console.log("classes", classes);
 
-  return <button className={classes}>{children}</button>;
+  return (
+    <button className={classes} type="button">
+      {children}
+    </button>
+  );
 };

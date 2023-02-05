@@ -1,5 +1,6 @@
 import { ToastContext } from "App";
 import { BtnOutline } from "components";
+import { BtnSolid } from "components/btn-solid/BtnSolid";
 import { useContext } from "react";
 
 export const Home = () => {
@@ -64,14 +65,23 @@ export const Home = () => {
 
       <BtnOutline
         bgColor="bg-teal-500"
-        textColor="text-teal-500"
-        size="px-6 py-2"
+        text="text-teal-500 text-xs font-bold"
+        padding="px-6 py-2"
         borderRadius="rounded"
       >
         NEW
       </BtnOutline>
 
-      <div className="card">card</div>
+      <BtnSolid
+        bgColor="bg-teal-500"
+        text="text-xs text-white font-bold"
+        padding="px-6 py-[9px]"
+        borderRadius="rounded"
+      >
+        NEW
+      </BtnSolid>
+
+      <div className="card focus:ring-1 focus:ring-orange-600">card</div>
     </>
   );
 };
