@@ -38,10 +38,14 @@ export const BtnOutline = (props) => {
     borderColor
   );
 
-  console.log("classes", classes);
-
   return (
-    <button className={classes} type="button">
+    <button
+      onClick={
+        props.onClick ? props.onClick : () => console.log("Button Clicked")
+      }
+      className={classes}
+      type="button"
+    >
       {children}
     </button>
   );

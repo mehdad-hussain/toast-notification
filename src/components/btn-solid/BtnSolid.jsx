@@ -1,4 +1,3 @@
-import React from "react";
 import { joinClasses } from "util";
 
 export const BtnSolid = (props) => {
@@ -38,7 +37,13 @@ export const BtnSolid = (props) => {
   );
 
   return (
-    <button class={classes} type="button">
+    <button
+      onClick={
+        props.onClick ? props.onClick : () => console.log("Button Clicked")
+      }
+      className={classes}
+      type="button"
+    >
       {children}
     </button>
   );
