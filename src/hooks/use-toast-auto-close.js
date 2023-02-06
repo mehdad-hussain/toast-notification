@@ -21,13 +21,11 @@ export const useToastAutoClose = ({
 
     let autoCloseToasts = toasts.filter((toast) => toast.isAutoClose);
 
-    console.log("autoCloseToasts", autoCloseToasts);
-
     if (autoCloseToasts.length > 0) {
       const toast = autoCloseToasts[autoCloseToasts.length - 1];
       // const id = toasts[0].id;
       // idea: we can use toasts[0].id but then we will face problem when we have multiple toasts, so we need to use toasts[toasts.length - 1].id, so that we can set timeout for the last toast. as toasts[0].id will set timeout for the first toast only and only after removing the first toast we can set timeout for the second toast and so on.
-      console.log("id", toast.id);
+
       setTimeout(() => {
         setRemoving(toast.id);
       }, toast.timer * 1000);

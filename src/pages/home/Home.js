@@ -59,7 +59,7 @@ export const Home = () => {
           onClick={() => {
             toast.current.warn({
               message: " It's a Warning Message",
-              isAutoClose: true,
+              isAutoClose: false,
             });
           }}
           bgColor="bg-yellow-500"

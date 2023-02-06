@@ -75,23 +75,34 @@ $danger-l: #ea4e2c2d;
   //   color: red;
   // }
 
-  // &__close:active {
-  //   color: green;
-  // }
+  // overflow: hidden;
+  // transform: translateX(calc(100% + 30px));
+  // transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
 
-  // &__close:focus {
-  //   outline: none;
-  // }
+  &-visible {
+    animation: slideFromRight 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35)
+      forwards;
+  }
 
-  // &__close:disabled {
-  //   color: #ccc;
-  // }
+  @keyframes slideFromRight {
+    0% {
+      transform: translateX(calc(100% + 30px));
+    }
+    100% {
+      transform: translateX(0%);
+    }
+  }
 
-  // &__close:disabled:hover {
-  //   color: #ccc;
-  // }
+  &-hidden {
+    animation: slideToRight 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35) forwards;
+  }
 
-  // &__close:disabled:active {
-  //   color: #ccc;
-  // }
+  @keyframes slideToRight {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(calc(100% + 30px));
+    }
+  }
 }

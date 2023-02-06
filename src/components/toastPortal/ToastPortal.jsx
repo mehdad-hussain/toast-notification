@@ -14,7 +14,23 @@ export const ToastPortal = forwardRef((props, ref) => {
 
   // section: remove toast function
   const removeToast = (id) => {
-    setToasts((prevToasts) => prevToasts.filter((toast) => toast.id !== id));
+    setToasts((prevToasts) => {
+      return prevToasts.map((toast) => {
+        if (toast.id === id) {
+          return {
+            ...toast,
+            isVisible: false,
+          };
+        } else {
+          return toast;
+        }
+      });
+    });
+    setTimeout(() => {
+      setToasts((prevToasts) => {
+        return prevToasts.filter((toast) => toast.id !== id);
+      });
+    }, 500);
   };
 
   // section: auto close toast custom hook
@@ -51,16 +67,16 @@ export const ToastPortal = forwardRef((props, ref) => {
       ]);
     },
     warn: (toast) => {
-      console.log("toast--", toast);
       setToasts((prevToasts) => [
         ...prevToasts,
         {
           message: toast.message,
           timer: toast.timer ? toast.timer : 5,
           isAutoClose: toast.isAutoClose === false ? false : true,
-          // as if isAutoClose equal to false it's a falsy value so we need to check if it's equal to true
+          // idea: as if isAutoClose equal to false it's a falsy value so we need to check if it's equal to true
           id: uuid(),
           mode: "warning",
+          isVisible: true,
         },
       ]);
     },
@@ -92,6 +108,7 @@ export const ToastPortal = forwardRef((props, ref) => {
             timer={toast.timer}
             isAutoClose={toast.isAutoClose}
             onClose={() => removeToast(toast.id)}
+            isVisible={toast.isVisible}
           />
         ))}
       </div>,

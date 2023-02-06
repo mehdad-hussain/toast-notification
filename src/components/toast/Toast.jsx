@@ -7,8 +7,21 @@ import { joinClasses } from "util";
 
 import styles from "./Toast.module.scss";
 
-export const Toast = ({ mode, onClose, message, isAutoClose, timer = 5 }) => {
-  const classes = joinClasses(styles.toast, styles[`toast-${mode}`]);
+export const Toast = ({
+  mode,
+  onClose,
+  message,
+  isAutoClose,
+  timer = 5,
+  isVisible,
+}) => {
+  console.log("toast jsx", isVisible);
+  const classes = joinClasses(
+    styles.toast,
+    styles[`toast-${mode}`],
+    isVisible === true && styles["toast-visible"],
+    isVisible === false && styles["toast-hidden"]
+  );
 
   const progressClasses = joinClasses(
     styles.toast__progress,
@@ -18,7 +31,7 @@ export const Toast = ({ mode, onClose, message, isAutoClose, timer = 5 }) => {
 
   return (
     <>
-      <div className={classes}>
+      <div className={classes} id="toast">
         <CheckCircleIcon
           className={joinClasses(
             "w-8 h-8 fill-green-500/70 stroke-1",
