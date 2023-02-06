@@ -1,8 +1,8 @@
 // prettier-ignore
-import {  XMarkIcon } from "@heroicons/react/24/solid";
+// import {  XMarkIcon } from "@heroicons/react/24/solid";
 
 // prettier-ignore
-import { CheckCircleIcon, ExclamationCircleIcon, InformationCircleIcon, } from "assets";
+import { CheckCircleIcon, ExclamationCircleIcon, InformationCircleIcon, XMarkIcon, } from "assets";
 import { joinClasses } from "util";
 
 import styles from "./Toast.module.scss";
@@ -55,7 +55,7 @@ export const Toast = ({
           <p className="ml-2 line-clamp-4">{message}</p>
         </div>
         <button onClick={onClose} className="justify-self-end">
-          <XMarkIcon className="w-6 h-6 stroke-2 fill-gray-600" />
+          <XMarkIcon className="w-5 h-5 stroke-2 fill-gray-600" />
         </button>
 
         {isAutoClose === true ? (

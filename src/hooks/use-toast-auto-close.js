@@ -34,10 +34,24 @@ export const useToastAutoClose = ({
 
   useEffect(() => {
     if (removing) {
-      setToasts((prevToasts) =>
-        prevToasts.filter((toast) => toast.id !== removing)
-      );
-      setRemoving("");
+      setToasts((prevToasts) => {
+        return prevToasts.map((toast) => {
+          if (toast.id === removing) {
+            return {
+              ...toast,
+              isVisible: false,
+            };
+          } else {
+            return toast;
+          }
+        });
+      });
+      setTimeout(() => {
+        setToasts((prevToasts) =>
+          prevToasts.filter((toast) => toast.id !== removing)
+        );
+        setRemoving("");
+      }, 500);
     }
   }, [removing, setToasts]);
 };

@@ -51,6 +51,7 @@ export const ToastPortal = forwardRef((props, ref) => {
           isAutoClose: toast.isAutoClose === false ? false : true,
           id: uuid(),
           mode: "success",
+          isVisible: true,
         },
       ]);
     },
@@ -63,6 +64,7 @@ export const ToastPortal = forwardRef((props, ref) => {
           isAutoClose: toast.isAutoClose === false ? false : true,
           id: uuid(),
           mode: "info",
+          isVisible: true,
         },
       ]);
     },
@@ -89,6 +91,7 @@ export const ToastPortal = forwardRef((props, ref) => {
           isAutoClose: toast.isAutoClose === false ? false : true,
           id: uuid(),
           mode: "error",
+          isVisible: true,
         },
       ]);
     },
