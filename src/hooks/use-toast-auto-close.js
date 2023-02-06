@@ -20,6 +20,9 @@ export const useToastAutoClose = ({
     // todo: this problem is happening for js closure, learn about it in detail
 
     let autoCloseToasts = toasts.filter((toast) => toast.isAutoClose);
+
+    console.log("autoCloseToasts", autoCloseToasts);
+
     if (autoCloseToasts.length > 0) {
       const toast = autoCloseToasts[autoCloseToasts.length - 1];
       // const id = toasts[0].id;

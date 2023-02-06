@@ -32,7 +32,7 @@ export const ToastPortal = forwardRef((props, ref) => {
         {
           message: toast.message,
           timer: toast.timer ? toast.timer : 5,
-          isAutoClose: toast.isAutoClose ? toast.isAutoClose : true,
+          isAutoClose: toast.isAutoClose === false ? false : true,
           id: uuid(),
           mode: "success",
         },
@@ -42,21 +42,25 @@ export const ToastPortal = forwardRef((props, ref) => {
       setToasts((prevToasts) => [
         ...prevToasts,
         {
-          ...toast,
+          message: toast.message,
+          timer: toast.timer ? toast.timer : 5,
+          isAutoClose: toast.isAutoClose === false ? false : true,
           id: uuid(),
           mode: "info",
-          isAutoClose: toast.isAutoClose ? toast.isAutoClose : true,
         },
       ]);
     },
     warn: (toast) => {
+      console.log("toast--", toast);
       setToasts((prevToasts) => [
         ...prevToasts,
         {
-          ...toast,
+          message: toast.message,
+          timer: toast.timer ? toast.timer : 5,
+          isAutoClose: toast.isAutoClose === false ? false : true,
+          // as if isAutoClose equal to false it's a falsy value so we need to check if it's equal to true
           id: uuid(),
           mode: "warning",
-          isAutoClose: toast.isAutoClose ? toast.isAutoClose : true,
         },
       ]);
     },
@@ -64,10 +68,11 @@ export const ToastPortal = forwardRef((props, ref) => {
       setToasts((prevToasts) => [
         ...prevToasts,
         {
-          ...toast,
+          message: toast.message,
+          timer: toast.timer ? toast.timer : 5,
+          isAutoClose: toast.isAutoClose === false ? false : true,
           id: uuid(),
           mode: "error",
-          isAutoClose: toast.isAutoClose ? toast.isAutoClose : true,
         },
       ]);
     },

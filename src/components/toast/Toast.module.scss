@@ -1,18 +1,33 @@
+$success: #3fbd63c4;
+$success-md: #3fbd637c;
+$success-l: #3fbd632d;
+$info: #0069dec4;
+$info-md: #0069de7c;
+$info-l: #0069de2d;
+
+$warning: #ef9400c4;
+$warning-md: #ef94007c;
+$warning-l: #ef94002d;
+
+$danger: #ea4e2cc4;
+$danger-md: #ea4e2c7c;
+$danger-l: #ea4e2c2d;
+
 .toast {
-  @apply bg-white p-4 max-w-[420px] min-w-[400px] rounded-md shadow-lg cursor-pointer font-medium grid grid-cols-7 items-center relative overflow-hidden;
+  @apply bg-white p-4 max-w-[420px] min-w-[286px] rounded-md shadow-lg cursor-pointer font-medium grid grid-cols-7 items-center relative overflow-hidden;
 
   &-success {
-    @apply border border-green-400 bg-green-800/10;
+    @apply border border-green-400 bg-green-100/90;
   }
 
   &-error {
-    @apply border border-red-400 bg-red-400/20;
+    @apply border border-red-400 bg-red-100/90;
   }
   &-warning {
     @apply border border-orange-300 bg-orange-100/90;
   }
   &-info {
-    @apply border border-blue-400 bg-blue-200/70;
+    @apply border border-blue-400 bg-blue-100/90;
   }
 
   &__content {

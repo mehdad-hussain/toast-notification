@@ -21,19 +21,19 @@ export const Toast = ({ mode, onClose, message, isAutoClose, timer = 5 }) => {
       <div className={classes}>
         <CheckCircleIcon
           className={joinClasses(
-            "w-11 h-11 fill-green-500/70 stroke-1",
+            "w-8 h-8 fill-green-500/70 stroke-1",
             mode !== "success" && "hidden"
           )}
         />
         <InformationCircleIcon
           className={joinClasses(
-            "w-10 h-10 fill-blue-500",
+            "w-7 h-7 fill-blue-500",
             mode !== "info" && "hidden"
           )}
         />
         <ExclamationCircleIcon
           className={joinClasses(
-            "w-10 h-10 ",
+            "w-7 h-7 ",
             mode === "success" ? "hidden" : mode === "info" ? "hidden" : "",
             mode === "error" ? "fill-orange-600/90" : "fill-amber-500/90"
           )}

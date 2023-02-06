@@ -9,8 +9,7 @@ export const Home = () => {
 
   return (
     <>
-      {/* make a button container  tailwind classes */}
-      <div className="grid items-center justify-center w-1/2 grid-cols-2 gap-2 h-1/2 justify-items-center">
+      <div className="grid items-center justify-center w-1/2 grid-cols-2 gap-2 mt-20 h-1/2 justify-items-center">
         <BtnOutline
           onClick={() => {
             toast.current.error({
@@ -18,8 +17,8 @@ export const Home = () => {
               timer: 3,
             });
           }}
-          bgColor="bg-teal-500"
-          text="text-teal-500 text-xs font-bold"
+          bgColor="bg-red-500"
+          text="text-red-500 text-xs font-bold"
           padding="px-6 py-2"
           borderRadius="rounded"
         >
@@ -44,8 +43,8 @@ export const Home = () => {
         <BtnOutline
           onClick={() => {
             toast.current.info({
-              message: " It's a Info Message",
-              timer: 7,
+              message:
+                " It's a Info Message, it will be closed after 7s .. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas sapiente illo quidem vel ipsa, pariatur nulla atque ab error quos.",
             });
           }}
           bgColor="bg-blue-500"
@@ -55,9 +54,24 @@ export const Home = () => {
         >
           Add Info Toast (7s)
         </BtnOutline>
+
+        <BtnSolid
+          onClick={() => {
+            toast.current.warn({
+              message: " It's a Warning Message",
+              isAutoClose: true,
+            });
+          }}
+          bgColor="bg-yellow-500"
+          text="text-xs text-white font-bold"
+          padding="px-6 py-[9px]"
+          borderRadius="rounded"
+        >
+          Add Warning Toast (9s)
+        </BtnSolid>
       </div>
 
-      <div className="card focus:ring-1 focus:ring-orange-600">card</div>
+      {/* <div className="card focus:ring-1 focus:ring-orange-600">card</div> */}
     </>
   );
 };
