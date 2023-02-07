@@ -15,8 +15,6 @@ $danger-l: #ea4e2c2d;
 
 .toast {
   @apply p-4 min-w-[286px] max-w-max rounded-md shadow-lg cursor-pointer font-medium grid grid-cols-7 items-center relative overflow-hidden;
-  // @apply bg-slate-800 text-white/70 border-slate-700;
-  // make dark theme compatible bg color gradient from green to slate for toast
 
   &-success {
     @apply border border-green-400 bg-green-100/90;
@@ -79,10 +77,6 @@ $danger-l: #ea4e2c2d;
 
     &-info::before {
       @apply bg-blue-400;
-    }
-
-    &__active::before {
-      @apply animate-[progress_5s_linear_forwards];
     }
   }
 
