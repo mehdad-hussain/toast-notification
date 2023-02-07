@@ -30,7 +30,7 @@
 @layer components {
   // section: card styles
   .card {
-    @apply p-4 rounded shadow-md xsM:w-64 smM:w-[24rem] mdM:w-[28rem] lgM:w-[32rem] xlM:w-[36rem] 2xlM:w-[40rem] w-[46rem];
+    @apply p-4 rounded xsM:w-64 smM:w-[24rem] mdM:w-[28rem] lgM:w-[32rem] xlM:w-[36rem] 2xlM:w-[40rem] w-[46rem] shadow-md;
   }
 
   // section: buttons styles
