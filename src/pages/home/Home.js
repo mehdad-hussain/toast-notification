@@ -19,7 +19,7 @@ export const Home = () => {
           }}
           bgColor="bg-red-500"
           text="text-red-500 text-xs font-bold"
-          padding="px-6 py-2"
+          padding="px-6 py-3"
           borderRadius="rounded"
         >
           Add Error Toast (3s)
@@ -34,7 +34,7 @@ export const Home = () => {
           }}
           bgColor="bg-teal-500"
           text="text-xs text-white font-bold"
-          padding="px-6 py-[9px]"
+          padding="px-6 py-3"
           borderRadius="rounded"
         >
           Add Success Toast (5s)
@@ -44,12 +44,12 @@ export const Home = () => {
           onClick={() => {
             toast.current.info({
               message:
-                " It's a Info Message, it will be closed after 7s .. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas sapiente illo quidem vel ipsa, pariatur nulla atque ab error quos.",
+                " It's a Info Message, it will be closed after 7s .. Lorem ipsum dolor sit amet",
             });
           }}
           bgColor="bg-blue-500"
           text="text-blue-500 text-xs font-bold"
-          padding="px-6 py-2"
+          padding="px-6 py-3"
           borderRadius="rounded"
         >
           Add Info Toast (7s)
@@ -64,14 +64,12 @@ export const Home = () => {
           }}
           bgColor="bg-yellow-500"
           text="text-xs text-white font-bold"
-          padding="px-6 py-[9px]"
+          padding="px-6 py-3"
           borderRadius="rounded"
         >
-          Add Warning Toast (9s)
+          Add Warning Toast (no auto close)
         </BtnSolid>
       </div>
-
-      {/* <div className="card focus:ring-1 focus:ring-orange-600">card</div> */}
     </>
   );
 };

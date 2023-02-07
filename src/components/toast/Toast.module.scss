@@ -14,24 +14,48 @@ $danger-md: #ea4e2c7c;
 $danger-l: #ea4e2c2d;
 
 .toast {
-  @apply bg-white p-4 max-w-[420px] min-w-[286px] rounded-md shadow-lg cursor-pointer font-medium grid grid-cols-7 items-center relative overflow-hidden;
+  @apply p-4 min-w-[286px] max-w-max rounded-md shadow-lg cursor-pointer font-medium grid grid-cols-7 items-center relative overflow-hidden;
+  // @apply bg-slate-800 text-white/70 border-slate-700;
+  // make dark theme compatible bg color gradient from green to slate for toast
 
   &-success {
     @apply border border-green-400 bg-green-100/90;
   }
 
+  &-success-dark {
+    @apply bg-gradient-to-r from-teal-700  to-slate-900;
+  }
+
   &-error {
     @apply border border-red-400 bg-red-100/90;
   }
+
+  &-error-dark {
+    @apply bg-gradient-to-r from-rose-900/70  to-slate-900;
+  }
+
   &-warning {
     @apply border border-orange-300 bg-orange-100/90;
   }
+
+  &-warning-dark {
+    @apply bg-gradient-to-r from-yellow-900/70  to-slate-900;
+  }
+
   &-info {
     @apply border border-blue-400 bg-blue-100/90;
   }
 
+  &-info-dark {
+    @apply bg-gradient-to-r from-sky-900/70  to-slate-900;
+  }
+
   &__content {
     @apply text-black/70 text-sm font-bold col-span-5;
+  }
+
+  &__content_dark {
+    @apply text-white text-sm font-bold col-span-5;
   }
 
   &__progress {
@@ -61,23 +85,6 @@ $danger-l: #ea4e2c2d;
       @apply animate-[progress_5s_linear_forwards];
     }
   }
-
-  // &__close {
-  //   position: absolute;
-  //   top: 0;
-  //   right: 0;
-  //   padding: 10px;
-  //   font-size: 20px;
-  //   cursor: pointer;
-  // }
-
-  // &__close:hover {
-  //   color: red;
-  // }
-
-  // overflow: hidden;
-  // transform: translateX(calc(100% + 30px));
-  // transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
 
   &-visible {
     animation: slideFromRight 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35)

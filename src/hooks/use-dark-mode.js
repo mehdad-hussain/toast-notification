@@ -27,6 +27,7 @@ export function useDarkMode(defaultValue) {
     toggle: () => setDarkMode((prev) => !prev),
     enable: () => setDarkMode(true),
     disable: () => setDarkMode(false),
+    reset: () => setDarkMode(isDarkOS),
   };
 }
 

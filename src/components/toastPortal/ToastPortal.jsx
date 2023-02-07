@@ -7,6 +7,7 @@ import { useToastPortal, useToastAutoClose } from "hooks";
 import styles from "./ToastPortal.module.scss";
 import { Toast } from "components";
 import { uuid } from "util/uuid";
+import { joinClasses } from "util";
 
 export const ToastPortal = forwardRef((props, ref) => {
   const [toasts, setToasts] = useState([]);
@@ -100,9 +101,11 @@ export const ToastPortal = forwardRef((props, ref) => {
     },
   }));
 
+  const classes = joinClasses(styles.toastContainer, props.className);
+
   return loaded ? (
     ReactDOM.createPortal(
-      <div className={styles.toastContainer}>
+      <div className={classes}>
         {toasts.map((toast) => (
           <Toast
             key={toast.id}

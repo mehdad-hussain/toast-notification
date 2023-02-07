@@ -2,6 +2,7 @@
 
 module.exports = {
   mode: "jit",
+  darkMode: "class",
   corePlugins: {},
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   safelist: [

@@ -3,22 +3,19 @@
 
 // prettier-ignore
 import { CheckCircleIcon, ExclamationCircleIcon, InformationCircleIcon, XMarkIcon, } from "assets";
+import { useDarkMode } from "hooks";
 import { joinClasses } from "util";
 
 import styles from "./Toast.module.scss";
 
-export const Toast = ({
-  mode,
-  onClose,
-  message,
-  isAutoClose,
-  timer = 5,
-  isVisible,
-}) => {
-  console.log("toast jsx", isVisible);
+export const Toast = (props) => {
+  const { message, mode, isAutoClose, timer, isVisible, onClose } = props;
+
+  const { isDarkMode } = useDarkMode();
+
   const classes = joinClasses(
     styles.toast,
-    styles[`toast-${mode}`],
+    isDarkMode ? styles[`toast-${mode}-dark`] : styles[`toast-${mode}`],
     isVisible === true && styles["toast-visible"],
     isVisible === false && styles["toast-hidden"]
   );
@@ -51,7 +48,11 @@ export const Toast = ({
             mode === "error" ? "fill-orange-600/90" : "fill-amber-500/90"
           )}
         />
-        <div className={styles.toast__content}>
+        <div
+          className={
+            isDarkMode ? styles.toast__content_dark : styles.toast__content
+          }
+        >
           <p className="ml-2 line-clamp-4">{message}</p>
         </div>
         <button onClick={onClose} className="justify-self-end">

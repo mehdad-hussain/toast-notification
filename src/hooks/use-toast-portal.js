@@ -7,7 +7,7 @@ export const useToastPortal = () => {
   let portalId = "toast-portal-" + useUuid(8);
   //   const [portalId] = useState(`toast-portal-${id}`);
 
-  console.log("useToastPortal rendered");
+  // console.log("useToastPortal rendered");
 
   useEffect(() => {
     const div = document.createElement("div");
