@@ -11,7 +11,22 @@ import { joinClasses } from "util";
 
 export const ToastPortal = forwardRef((props, ref) => {
   const [toasts, setToasts] = useState([]);
-  const { loaded, portalId } = useToastPortal();
+
+  // console.log("toast portal jsx rendered");
+
+  let { position } = props;
+
+  let flexDirectionClass = position.includes("top")
+    ? "flex-col"
+    : "flex-col-reverse";
+
+  let alignItemsClass = position.includes("left")
+    ? "items-start"
+    : position.includes("right")
+    ? "items-end"
+    : "items-center";
+
+  const { loaded, portalId } = useToastPortal("toast", position);
 
   // section: remove toast function
   const removeToast = (id) => {
@@ -84,6 +99,8 @@ export const ToastPortal = forwardRef((props, ref) => {
       ]);
     },
     error: (toast) => {
+      // console.log("toast--", [toast]);
+
       setToasts((prevToasts) => [
         ...prevToasts,
         {
@@ -101,7 +118,11 @@ export const ToastPortal = forwardRef((props, ref) => {
     },
   }));
 
-  const classes = joinClasses(styles.toastContainer, props.className);
+  const classes = joinClasses(
+    styles.toastContainer,
+    flexDirectionClass,
+    alignItemsClass
+  );
 
   return loaded ? (
     ReactDOM.createPortal(
@@ -115,6 +136,7 @@ export const ToastPortal = forwardRef((props, ref) => {
             isAutoClose={toast.isAutoClose}
             onClose={() => removeToast(toast.id)}
             isVisible={toast.isVisible}
+            position={position}
           />
         ))}
       </div>,
@@ -124,5 +146,3 @@ export const ToastPortal = forwardRef((props, ref) => {
     <>null</>
   );
 });
-
-// export default ToastPortal;

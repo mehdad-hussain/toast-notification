@@ -14,7 +14,7 @@ $danger-md: #ea4e2c7c;
 $danger-l: #ea4e2c2d;
 
 .toast {
-  @apply p-4 min-w-[286px] max-w-max rounded-md shadow-lg cursor-pointer font-medium grid grid-cols-7 items-center relative overflow-hidden;
+  @apply p-4 min-w-[286px] max-w-max rounded-md shadow-lg cursor-pointer font-medium grid grid-cols-7 items-center overflow-hidden;
 
   &-success {
     @apply border border-green-400 bg-green-100/90;
@@ -80,7 +80,7 @@ $danger-l: #ea4e2c2d;
     }
   }
 
-  &-visible {
+  &-visible-right {
     animation: slideFromRight 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35)
       forwards;
   }
@@ -94,7 +94,7 @@ $danger-l: #ea4e2c2d;
     }
   }
 
-  &-hidden {
+  &-hidden-right {
     animation: slideToRight 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35) forwards;
   }
 
@@ -104,6 +104,87 @@ $danger-l: #ea4e2c2d;
     }
     100% {
       transform: translateX(calc(100% + 30px));
+    }
+  }
+
+  &-visible-left {
+    animation: slideFromLeft 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35)
+      forwards;
+  }
+
+  @keyframes slideFromLeft {
+    0% {
+      transform: translateX(calc(-100% - 30px));
+    }
+    100% {
+      transform: translateX(0%);
+    }
+  }
+
+  &-hidden-left {
+    animation: slideToLeft 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35) forwards;
+  }
+
+  @keyframes slideToLeft {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(calc(-100% - 30px));
+    }
+  }
+
+  &-visible-top {
+    animation: slideFromTop 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35) forwards;
+  }
+
+  @keyframes slideFromTop {
+    0% {
+      transform: translateY(-1000%);
+    }
+    100% {
+      transform: translateY(0%);
+    }
+  }
+
+  &-hidden-top {
+    animation: slideToTop 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35) forwards;
+  }
+
+  @keyframes slideToTop {
+    0% {
+      transform: translateY(0%);
+    }
+    100% {
+      transform: translateY(-1000%);
+    }
+  }
+
+  &-visible-bottom {
+    animation: slideFromBottom 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35)
+      forwards;
+  }
+
+  @keyframes slideFromBottom {
+    0% {
+      transform: translateY(1000%);
+    }
+    100% {
+      transform: translateY(0%);
+    }
+  }
+
+  &-hidden-bottom {
+    animation: slideToBottom 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35)
+      forwards;
+  }
+
+  @keyframes slideToBottom {
+    0% {
+      transform: translateY(0%);
+    }
+    100% {
+      transform: translateY(1000%);
     }
   }
 }

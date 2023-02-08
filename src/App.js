@@ -1,19 +1,17 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect } from "react";
 // prettier-ignore
 
-import { BtnSolid, ToastPortal } from "components";
+import { BtnSolid, ToastContainer,  } from "components";
 import styles from "./App.module.scss";
 import { Home } from "pages";
 import { useDarkMode } from "hooks";
+import { ModalContainer } from "components";
 
 export const ToastContext = React.createContext();
 
 function App() {
-  const toast = useRef(null);
-
   const { isDarkMode, toggle, enable, disable, reset } = useDarkMode();
 
-  // add dark class to body is isDarkMode is true
   useEffect(() => {
     if (isDarkMode) {
       document.body.classList.add("dark");
@@ -30,7 +28,8 @@ function App() {
 
   return (
     <>
-      <div className="w-1/2 h-40 mt-10 ml-auto">
+      <ModalContainer />
+      <div className="w-1/2 h-40 mt-0 ml-auto">
         <p className="mb-4 dark:text-white">
           Current theme: {isDarkMode ? "dark" : "light"}
         </p>
@@ -74,10 +73,9 @@ function App() {
           Reset as Os Preference
         </BtnSolid>
       </div>
-      <ToastContext.Provider value={toast}>
+      <ToastContainer>
         <Home />
-      </ToastContext.Provider>
-      <ToastPortal ref={toast} />
+      </ToastContainer>
     </>
   );
 }

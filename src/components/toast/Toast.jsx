@@ -9,15 +9,37 @@ import { joinClasses } from "util";
 import styles from "./Toast.module.scss";
 
 export const Toast = (props) => {
-  const { message, mode, isAutoClose, timer, isVisible, onClose } = props;
+  const { message, mode, isAutoClose, timer, isVisible, onClose, position } =
+    props;
 
   const { isDarkMode } = useDarkMode();
 
   const classes = joinClasses(
     styles.toast,
     isDarkMode ? styles[`toast-${mode}-dark`] : styles[`toast-${mode}`],
-    isVisible === true && styles["toast-visible"],
-    isVisible === false && styles["toast-hidden"]
+    isVisible === true
+      ? position === "top-right"
+        ? styles["toast-visible-right"]
+        : position === "top-left"
+        ? styles["toast-visible-left"]
+        : position === "bottom-right"
+        ? styles["toast-visible-right"]
+        : position === "bottom-left"
+        ? styles["toast-visible-left"]
+        : position === "top-center"
+        ? styles["toast-visible-top"]
+        : styles["toast-visible-bottom"]
+      : position === "top-right"
+      ? styles["toast-hidden-right"]
+      : position === "top-left"
+      ? styles["toast-hidden-left"]
+      : position === "bottom-right"
+      ? styles["toast-hidden-right"]
+      : position === "bottom-left"
+      ? styles["toast-hidden-left"]
+      : position === "top-center"
+      ? styles["toast-hidden-top"]
+      : styles["toast-hidden-bottom"]
   );
 
   const progressClasses = joinClasses(

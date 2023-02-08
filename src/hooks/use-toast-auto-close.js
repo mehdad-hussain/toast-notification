@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
 export const useToastAutoClose = ({
-  isAutoClose,
-  timer,
+  // isAutoClose,
+  // timer,
   toasts,
   setToasts,
 }) => {
