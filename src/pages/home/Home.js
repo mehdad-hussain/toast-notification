@@ -96,7 +96,7 @@ export const Home = () => {
           padding="px-6 py-3"
           borderRadius="rounded"
         >
-          Success Toast (5s) top-center
+          Success Toast (no auto close) top-center
         </BtnSolid>
 
         <BtnOutline

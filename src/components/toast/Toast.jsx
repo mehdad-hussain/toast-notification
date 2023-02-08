@@ -2,7 +2,7 @@
 // import {  XMarkIcon } from "@heroicons/react/24/solid";
 
 // prettier-ignore
-import { CheckCircleIcon, ExclamationCircleIcon, InformationCircleIcon, XMarkIcon, } from "assets";
+import { CheckCircleIcon, ExclamationCircleIcon, InformationCircleIcon, WarningSignIcon, XMarkIcon, } from "assets";
 import { useDarkMode } from "hooks";
 import { joinClasses } from "util";
 
@@ -57,17 +57,25 @@ export const Toast = (props) => {
             mode !== "success" && "hidden"
           )}
         />
+
         <InformationCircleIcon
           className={joinClasses(
             "w-7 h-7 fill-blue-500",
             mode !== "info" && "hidden"
           )}
         />
+
+        <WarningSignIcon
+          className={joinClasses(
+            "w-7 h-7 fill-amber-500/90",
+            mode !== "warning" && "hidden"
+          )}
+        />
+
         <ExclamationCircleIcon
           className={joinClasses(
-            "w-7 h-7 ",
-            mode === "success" ? "hidden" : mode === "info" ? "hidden" : "",
-            mode === "error" ? "fill-orange-600/90" : "fill-amber-500/90"
+            "w-7 h-7 fill-orange-500/90",
+            mode !== "error" && "hidden"
           )}
         />
         <div

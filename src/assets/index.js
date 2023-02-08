@@ -6,6 +6,7 @@ import CheckCircleIcon from "./icons/CheckCircleIcon";
 import ExclamationCircleIcon from "./icons/ExclamationCircleIcon";
 import InformationCircleIcon from "./icons/InformationCircleIcon";
 import XMarkIcon from "./icons/XMarkIcon";
+import WarningSignIcon from "./icons/WarningSignIcon";
 
 export {
   ProductIcon,
@@ -15,4 +16,5 @@ export {
   ExclamationCircleIcon,
   InformationCircleIcon,
   XMarkIcon,
+  WarningSignIcon,
 };
