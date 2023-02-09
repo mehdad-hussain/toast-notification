@@ -21,20 +21,11 @@
   }
   // section: modal styles
   .modal {
-    background: white;
-    padding: 50px;
     position: relative;
     z-index: 10000;
     display: inline-block;
-    //   h2 {
-    //     font-size: 25px;
-    //     line-height: 25px;
-    //     margin-bottom: 15px;
-    //   }
-    //   p {
-    //     font-size: 18px;
-    //     line-height: 22px;
-    //   }
+    // background-color: white;
+
     .modal-svg {
       position: absolute;
       top: 0;
@@ -44,10 +35,18 @@
       border-radius: 8px;
       z-index: -1;
       rect {
-        stroke: #fff;
-        stroke-width: 2px;
-        stroke-dasharray: 1747; // sm
-        stroke-dashoffset: 1778; //sm
+        // stroke: #fff;
+        // stroke-width: 2px;
+        // stroke-dasharray: 1747; // sm
+        // stroke-dashoffset: 1778; //sm
+        // stroke-dasharray: 2147; // md
+        // stroke-dashoffset: 2178; // md
+        // stroke-dasharray: 2547; // lg
+        // stroke-dashoffset: 2578; // lg
+        // stroke-dasharray: 2947; // xl
+        // stroke-dashoffset: 2978; // xl
+        // stroke-dasharray: 3147; // xxl
+        // stroke-dashoffset: 3178; // xxl
       }
     }
   }
@@ -218,8 +217,8 @@
       }
       .modal {
         border-radius: 8px;
-        height: 30rem;
-        width: 24rem;
+        height: max-content;
+        width: max-content;
         animation: killShot 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
         .modal-content > * {
           animation: modalContentFadeOut 0.5s 0.5
@@ -520,13 +519,13 @@
   }
   90% {
     border-radius: 8px;
-    height: 490px;
-    width: 444px;
+    height: 25%;
+    width: 25%;
   }
   100% {
     border-radius: 8px;
-    height: 30rem;
-    width: 24rem;
+    height: max-content;
+    width: max-content;
   }
 }
 

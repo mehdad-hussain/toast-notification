@@ -1,6 +1,6 @@
 import { useContext, useRef } from "react";
 // prettier-ignore
-import { BtnOutline, ModalContainer, ToastContext, modalAnimation, } from "components";
+import { BtnOutline, ModalContainer, ToastContext, modalAnimation,modalSize } from "components";
 import { BtnSolid } from "components/btn-solid/BtnSolid";
 
 export const Home = () => {
@@ -186,8 +186,10 @@ export const Home = () => {
         <BtnSolid
           onClick={() => {
             modalRef.current.openModal({
-              title: "Modal Title",
-              content: "Modal Content",
+              size: modalSize.xl,
+              title: "Unfolding modal",
+              content:
+                "Modal Content Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores, esse?",
               footer: "Modal Footer",
               animation: modalAnimation.unfolding,
             });
@@ -202,7 +204,8 @@ export const Home = () => {
         <BtnOutline
           onClick={() => {
             modalRef.current.openModal({
-              title: "Modal Title",
+              size: modalSize.md,
+              title: "Revealing modal",
               content: "Modal Content",
               footer: "Modal Footer",
               animation: modalAnimation.revealing,
@@ -218,7 +221,8 @@ export const Home = () => {
         <BtnSolid
           onClick={() => {
             modalRef.current.openModal({
-              title: "Modal Title",
+              size: modalSize.lg,
+              title: "Uncovering modal",
               content: "Modal Content",
               footer: "Modal Footer",
               animation: modalAnimation.uncovering,
@@ -234,7 +238,8 @@ export const Home = () => {
         <BtnOutline
           onClick={() => {
             modalRef.current.openModal({
-              title: "Modal Title",
+              size: modalSize.xl,
+              title: "BlowUp modal",
               content: "Modal Content",
               footer: "Modal Footer",
               animation: modalAnimation.blowUp,
@@ -250,9 +255,22 @@ export const Home = () => {
         <BtnSolid
           onClick={() => {
             modalRef.current.openModal({
-              title: "Modal Title",
+              size: modalSize.sm,
+              title: "Meep modal",
               content: "Modal Content",
-              footer: "Modal Footer",
+              // footer: (
+              //   <BtnOutline
+              //     onClick={() => {
+              //       console.log("clicked");
+              //     }}
+              //     bgColor="bg-cyan-500"
+              //     text="text-xs text-cyan-500 font-bold"
+              //     padding="px-6 py-3"
+              //     borderRadius="rounded"
+              //   >
+              //     Close
+              //   </BtnOutline>
+              // ),
               animation: modalAnimation.meep,
             });
           }}
@@ -263,13 +281,17 @@ export const Home = () => {
         >
           Meep modal
         </BtnSolid>
+
         <BtnOutline
           onClick={() => {
             modalRef.current.openModal({
-              title: "Modal Title",
-              content: "Modal Content",
+              size: modalSize.md,
+              title: "Sketch modal",
+              content:
+                "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores, esse? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores, esse?Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores, esse?Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores, esse?",
               footer: "Modal Footer",
               animation: modalAnimation.sketch,
+              bgColor: "bg-white",
             });
           }}
           bgColor="bg-cyan-500"
@@ -282,10 +304,13 @@ export const Home = () => {
         <BtnSolid
           onClick={() => {
             modalRef.current.openModal({
-              title: "Modal Title",
-              content: "Modal Content",
+              size: modalSize.md,
+              title: "Bond modal",
+              content:
+                "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores, esse?Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores, esse?",
               footer: "Modal Footer",
               animation: modalAnimation.bond,
+              modalBgColor: "bg-gray-500",
             });
           }}
           bgColor="bg-sky-500"

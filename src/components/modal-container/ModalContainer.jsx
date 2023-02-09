@@ -35,10 +35,12 @@ export const ModalContainer = forwardRef((props, ref) => {
         {
           id: uuid(),
           isVisible: true,
+          size: modal.size ? modal.size : "md",
           title: modal?.title ? modal.title : "",
-          body: props.children,
+          content: modal?.content ? modal.content : "",
           footer: modal?.footer ? modal.footer : "",
           animation: modal.animation.name,
+          bgColor: modal.bgColor ? modal.bgColor : "bg-white",
         },
       ];
     });
@@ -148,10 +150,12 @@ export const ModalContainer = forwardRef((props, ref) => {
           <Modal
             key={modal.id}
             id={modal.id}
+            size={modal.size.width}
             title={modal.title}
-            body={modal.body}
+            content={modal.content}
             footer={modal.footer}
             isVisible={modal.isVisible}
+            bgColor={modal.bgColor}
             onClose={() => removeModal(modal.id)}
           />
         ))}
@@ -191,5 +195,23 @@ export const modalAnimation = {
   bond: {
     name: "bond",
     duration: 1990,
+  },
+};
+
+export const modalSize = {
+  sm: {
+    width: "384px",
+  },
+  md: {
+    width: "600px",
+  },
+  lg: {
+    width: "800px",
+  },
+  xl: {
+    width: "1000px",
+  },
+  xxl: {
+    width: "1200px",
   },
 };
