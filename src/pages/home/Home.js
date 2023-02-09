@@ -1,12 +1,15 @@
-import { BtnOutline, ToastContext } from "components";
+import { useContext, useRef } from "react";
+// prettier-ignore
+import { BtnOutline, ModalContainer, ToastContext, modalAnimation, } from "components";
 import { BtnSolid } from "components/btn-solid/BtnSolid";
-import { useContext } from "react";
 
 export const Home = () => {
   const { toast, positionedToast } = useContext(ToastContext);
+  const modalRef = useRef(null);
 
   return (
     <>
+      <ModalContainer ref={modalRef} />
       <div className="grid items-center justify-center w-full grid-cols-4 gap-2 mt-20 h-1/2 justify-items-center">
         <BtnOutline
           onClick={() => {
@@ -177,6 +180,121 @@ export const Home = () => {
         >
           Info Toast (7s) bottom-center
         </BtnOutline>
+      </div>
+
+      <div className="grid items-center justify-center w-full grid-cols-4 gap-2 mt-20 h-1/2 justify-items-center">
+        <BtnSolid
+          onClick={() => {
+            modalRef.current.openModal({
+              title: "Modal Title",
+              content: "Modal Content",
+              footer: "Modal Footer",
+              animation: modalAnimation.unfolding,
+            });
+          }}
+          bgColor="bg-emerald-500"
+          text="text-xs text-white font-bold"
+          padding="px-6 py-3"
+          borderRadius="rounded"
+        >
+          Unfolding modal
+        </BtnSolid>
+        <BtnOutline
+          onClick={() => {
+            modalRef.current.openModal({
+              title: "Modal Title",
+              content: "Modal Content",
+              footer: "Modal Footer",
+              animation: modalAnimation.revealing,
+            });
+          }}
+          bgColor="bg-emerald-500"
+          text="text-emerald-500 text-xs font-bold"
+          padding="px-6 py-3"
+          borderRadius="rounded"
+        >
+          Revealing modal
+        </BtnOutline>
+        <BtnSolid
+          onClick={() => {
+            modalRef.current.openModal({
+              title: "Modal Title",
+              content: "Modal Content",
+              footer: "Modal Footer",
+              animation: modalAnimation.uncovering,
+            });
+          }}
+          bgColor="bg-slate-500"
+          text="text-xs text-white font-bold"
+          padding="px-6 py-3"
+          borderRadius="rounded"
+        >
+          Uncovering modal
+        </BtnSolid>
+        <BtnOutline
+          onClick={() => {
+            modalRef.current.openModal({
+              title: "Modal Title",
+              content: "Modal Content",
+              footer: "Modal Footer",
+              animation: modalAnimation.blowUp,
+            });
+          }}
+          bgColor="bg-slate-500"
+          text="text-xs text-slate-500 font-bold"
+          padding="px-6 py-3"
+          borderRadius="rounded"
+        >
+          BlowUp modal
+        </BtnOutline>
+        <BtnSolid
+          onClick={() => {
+            modalRef.current.openModal({
+              title: "Modal Title",
+              content: "Modal Content",
+              footer: "Modal Footer",
+              animation: modalAnimation.meep,
+            });
+          }}
+          bgColor="bg-cyan-500"
+          text="text-xs text-white font-bold"
+          padding="px-6 py-3"
+          borderRadius="rounded"
+        >
+          Meep modal
+        </BtnSolid>
+        <BtnOutline
+          onClick={() => {
+            modalRef.current.openModal({
+              title: "Modal Title",
+              content: "Modal Content",
+              footer: "Modal Footer",
+              animation: modalAnimation.sketch,
+            });
+          }}
+          bgColor="bg-cyan-500"
+          text="text-xs text-cyan-500 font-bold"
+          padding="px-6 py-3"
+          borderRadius="rounded"
+        >
+          Sketch modal
+        </BtnOutline>
+        <BtnSolid
+          onClick={() => {
+            modalRef.current.openModal({
+              title: "Modal Title",
+              content: "Modal Content",
+              footer: "Modal Footer",
+              animation: modalAnimation.bond,
+            });
+          }}
+          bgColor="bg-sky-500"
+          text="text-xs text-white font-bold"
+          padding="px-6 py-3"
+          borderRadius="rounded"
+        >
+          Bond modal
+        </BtnSolid>
       </div>
     </>
   );

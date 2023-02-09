@@ -8,7 +8,7 @@ import { uuid } from "util";
 import "./ModalContainer.scss";
 
 export const ModalContainer = forwardRef((props, ref) => {
-  const [modal, setModal] = useState([]);
+  const [modalArray, setModalArray] = useState([]);
   const [animation, setAnimation] = useState({
     name: "",
     duration: 0,
@@ -19,11 +19,11 @@ export const ModalContainer = forwardRef((props, ref) => {
   const { loaded, portalId } = usePortal("modal", "center");
 
   const addModal = (modal) => {
-    if (modal.length > 0) {
+    if (modalArray.length > 0) {
       return;
     }
 
-    setModal((prevModal) => {
+    setModalArray((prevModal) => {
       setAnimation({
         ...animation,
         name: modal.animation.name,
@@ -46,7 +46,7 @@ export const ModalContainer = forwardRef((props, ref) => {
 
   const removeModal = (id) => {
     setAnimation({ ...animation, isOut: true });
-    setModal((prevModal) => {
+    setModalArray((prevModal) => {
       return prevModal.map((modal) => {
         if (modal.id === id) {
           return {
@@ -60,7 +60,7 @@ export const ModalContainer = forwardRef((props, ref) => {
     });
     setTimeout(() => {
       setAnimation({ ...animation, finished: true });
-      setModal((prevModal) => {
+      setModalArray((prevModal) => {
         return prevModal.filter((modal) => modal.id !== id);
       });
     }, animation.duration);
@@ -74,6 +74,8 @@ export const ModalContainer = forwardRef((props, ref) => {
       removeModal(id);
     },
   }));
+
+  // section: logic for animating modal with custom update effect hook
 
   useUpdateEffect(() => {
     let backContentClass =
@@ -121,7 +123,7 @@ export const ModalContainer = forwardRef((props, ref) => {
       }
       setAnimation({
         name: "",
-        duration: 500,
+        duration: 490,
         isOut: false,
         finished: false,
       });
@@ -142,7 +144,7 @@ export const ModalContainer = forwardRef((props, ref) => {
   return loaded ? (
     ReactDOM.createPortal(
       <div className="modalContainer" id="modal-container">
-        {modal.map((modal) => (
+        {modalArray.map((modal) => (
           <Modal
             key={modal.id}
             id={modal.id}
@@ -164,30 +166,30 @@ export const ModalContainer = forwardRef((props, ref) => {
 export const modalAnimation = {
   unfolding: {
     name: "unfolding",
-    duration: 1300,
+    duration: 1290,
   },
   revealing: {
     name: "revealing",
-    duration: 500,
+    duration: 490,
   },
   uncovering: {
     name: "uncovering",
-    duration: 500,
+    duration: 490,
   },
   blowUp: {
     name: "blowUp",
-    duration: 500,
+    duration: 490,
   },
   meep: {
     name: "meep",
-    duration: 500,
+    duration: 490,
   },
   sketch: {
     name: "sketch",
-    duration: 500,
+    duration: 490,
   },
   bond: {
     name: "bond",
-    duration: 2000,
+    duration: 1990,
   },
 };
