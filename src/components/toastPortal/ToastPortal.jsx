@@ -2,12 +2,11 @@
 import { forwardRef, useImperativeHandle, useState, } from "react";
 import ReactDOM from "react-dom";
 
-import { useToastPortal, useToastAutoClose } from "hooks";
+import { usePortal, useToastAutoClose } from "hooks";
 
 import styles from "./ToastPortal.module.scss";
 import { Toast } from "components";
-import { uuid } from "util/uuid";
-import { joinClasses } from "util";
+import { joinClasses, uuid } from "util";
 
 export const ToastPortal = forwardRef((props, ref) => {
   const [toasts, setToasts] = useState([]);
@@ -26,7 +25,7 @@ export const ToastPortal = forwardRef((props, ref) => {
     ? "items-end"
     : "items-center";
 
-  const { loaded, portalId } = useToastPortal("toast", position);
+  const { loaded, portalId } = usePortal("toast", position);
 
   // section: remove toast function
   const removeToast = (id) => {
@@ -57,57 +56,54 @@ export const ToastPortal = forwardRef((props, ref) => {
 
   // section: useImperativeHandle to expose addMessage function to parent component
   useImperativeHandle(ref, () => ({
-    success: (toast) => {
-      // console.log("toast--", [...toast]);
+    success: (message, toastObj) => {
       setToasts((prevToasts) => [
         ...prevToasts,
         {
-          message: toast.message,
-          timer: toast.timer ? toast.timer : 5,
-          isAutoClose: toast.isAutoClose === false ? false : true,
           id: uuid(),
+          message: message,
+          timer: toastObj?.timer ? toastObj?.timer : 5,
+          isAutoClose: toastObj?.isAutoClose === false ? false : true,
           mode: "success",
           isVisible: true,
         },
       ]);
     },
-    info: (toast) => {
+    info: (message, toastObj) => {
       setToasts((prevToasts) => [
         ...prevToasts,
         {
-          message: toast.message,
-          timer: toast.timer ? toast.timer : 5,
-          isAutoClose: toast.isAutoClose === false ? false : true,
           id: uuid(),
+          message: message,
+          timer: toastObj?.timer ? toastObj?.timer : 5,
+          isAutoClose: toastObj?.isAutoClose === false ? false : true,
+          // idea: as if isAutoClose equal to false it's a falsy value so we need to check if it's equal to true or not
           mode: "info",
           isVisible: true,
         },
       ]);
     },
-    warn: (toast) => {
+    warn: (message, toastObj) => {
       setToasts((prevToasts) => [
         ...prevToasts,
         {
-          message: toast.message,
-          timer: toast.timer ? toast.timer : 5,
-          isAutoClose: toast.isAutoClose === false ? false : true,
-          // idea: as if isAutoClose equal to false it's a falsy value so we need to check if it's equal to true
           id: uuid(),
+          message: message,
+          timer: toastObj?.timer ? toastObj?.timer : 5,
+          isAutoClose: toastObj?.isAutoClose === false ? false : true,
           mode: "warning",
           isVisible: true,
         },
       ]);
     },
-    error: (toast) => {
-      // console.log("toast--", [toast]);
-
+    error: (message, toastObj) => {
       setToasts((prevToasts) => [
         ...prevToasts,
         {
-          message: toast.message,
-          timer: toast.timer ? toast.timer : 5,
-          isAutoClose: toast.isAutoClose === false ? false : true,
           id: uuid(),
+          message: message,
+          timer: toastObj?.timer ? toastObj?.timer : 5,
+          isAutoClose: toastObj?.isAutoClose === false ? false : true,
           mode: "error",
           isVisible: true,
         },

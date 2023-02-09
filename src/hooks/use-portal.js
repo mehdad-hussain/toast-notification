@@ -2,14 +2,12 @@ import { useEffect, useState } from "react";
 
 import { useUuid } from "hooks";
 
-export const useToastPortal = (type, position) => {
+export const usePortal = (type, position) => {
   const [loaded, setLoaded] = useState(false);
-  let portalId = "portal-" + useUuid(8);
-  //   const [portalId] = useState(`toast-portal-${id}`);
+  let portalName = type === "toast" ? "toast-portal-" : "modal-portal-";
+  let portalId = portalName + useUuid(8);
 
-  // console.log("useToastPortal rendered");
-
-  position = type === "toast" ? position : "top-right";
+  // console.log("usePortal rendered");
 
   let positionClass = "";
 
@@ -26,19 +24,26 @@ export const useToastPortal = (type, position) => {
         ? "bottom: 1rem; left: 1rem;"
         : position === "top-center"
         ? "top: 1rem; left: 50%; transform: translateX(-50%);"
-        : position === "bottom-center"
-        ? "bottom: 1rem; left: 50%; transform: translateX(-50%);"
-        : position === "center";
+        : "bottom: 1rem; left: 50%; transform: translateX(-50%);";
   } else if (type === "modal") {
-    position = "center";
+    position = position ? position : "center";
+    positionClass =
+      position === "center"
+        ? ""
+        : position === "top"
+        ? "top: 1rem; left: 50%; transform: translateX(-50%);"
+        : position === "bottom"
+        ? "bottom: 1rem; left: 50%; transform: translateX(-50%);"
+        : position === "left"
+        ? "top: 50%; left: 1rem; transform: translateY(-50%);"
+        : "top: 50%; right: 1rem; transform: translateY(-50%);";
   }
 
   useEffect(() => {
     const div = document.createElement("div");
 
     div.id = portalId;
-    div.style = `position: fixed;${positionClass}`;
-    // top: 3rem; right: 10px;
+    div.style = `position: fixed; ${positionClass}`;
     document.getElementsByTagName("body")[0].prepend(div);
     setLoaded(true);
 

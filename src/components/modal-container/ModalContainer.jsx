@@ -1,67 +1,197 @@
-import React from "react";
+import { forwardRef, useImperativeHandle, useState } from "react";
+import ReactDOM from "react-dom";
 
-export function ModalContainer() {
-  const [showModal, setShowModal] = React.useState(false);
-  return (
-    <>
-      <button
-        className="px-6 py-3 mb-1 mr-1 text-sm font-bold text-white uppercase transition-all duration-150 ease-linear bg-pink-500 rounded shadow outline-none active:bg-pink-600 hover:shadow-lg focus:outline-none"
-        type="button"
-        onClick={() => setShowModal(true)}
-      >
-        Open small modal
-      </button>
-      {showModal ? (
-        <>
-          <div className="fixed inset-0 z-50 flex items-center justify-center overflow-x-hidden overflow-y-auto outline-none focus:outline-none">
-            <div className="relative w-auto max-w-sm mx-auto my-6">
-              {/*content*/}
-              <div className="relative flex flex-col w-full bg-white border-0 rounded-lg shadow-lg outline-none focus:outline-none">
-                {/*header*/}
-                <div className="flex items-start justify-between p-5 border-b border-solid rounded-t border-slate-200">
-                  <h3 className="text-3xl font-semibold">Modal Title</h3>
-                  <button
-                    className="float-right p-1 ml-auto text-3xl font-semibold leading-none text-black bg-transparent border-0 outline-none opacity-5 focus:outline-none"
-                    onClick={() => setShowModal(false)}
-                  >
-                    <span className="block w-6 h-6 text-2xl text-black bg-transparent outline-none opacity-5 focus:outline-none">
-                      ×
-                    </span>
-                  </button>
-                </div>
-                {/*body*/}
-                <div className="relative flex-auto p-6">
-                  <p className="my-4 text-lg leading-relaxed text-slate-500">
-                    I always felt like I could do anything. That’s the main
-                    thing people are controlled by! Thoughts- their perception
-                    of themselves! They're slowed down by their perception of
-                    themselves. If you're taught you can’t do anything, you
-                    won’t do anything. I was taught I could do everything.
-                  </p>
-                </div>
-                {/*footer*/}
-                <div className="flex items-center justify-end p-6 border-t border-solid rounded-b border-slate-200">
-                  <button
-                    className="px-6 py-2 mb-1 mr-1 text-sm font-bold text-red-500 uppercase transition-all duration-150 ease-linear outline-none background-transparent focus:outline-none"
-                    type="button"
-                    onClick={() => setShowModal(false)}
-                  >
-                    Close
-                  </button>
-                  <button
-                    className="px-6 py-3 mb-1 mr-1 text-sm font-bold text-white uppercase transition-all duration-150 ease-linear rounded shadow outline-none bg-emerald-500 active:bg-emerald-600 hover:shadow-lg focus:outline-none"
-                    type="button"
-                    onClick={() => setShowModal(false)}
-                  >
-                    Save Changes
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="fixed inset-0 z-40 bg-black opacity-25"></div>
-        </>
-      ) : null}
-    </>
+import { usePortal, useUpdateEffect } from "hooks";
+
+import { Modal } from "components";
+import { uuid } from "util";
+import "./ModalContainer.scss";
+
+export const ModalContainer = forwardRef((props, ref) => {
+  const [modal, setModal] = useState([]);
+  const [animation, setAnimation] = useState({
+    name: "",
+    duration: 0,
+    isOut: false,
+    finished: false,
+  });
+
+  const { loaded, portalId } = usePortal("modal", "center");
+
+  const addModal = (modal) => {
+    setModal((prevModal) => {
+      setAnimation({
+        ...animation,
+        name: modal.animation.name,
+        duration: modal.animation.duration,
+      });
+
+      return [
+        ...prevModal,
+        {
+          id: uuid(),
+          isVisible: true,
+          title: modal?.title ? modal.title : "",
+          body: props.children,
+          footer: modal?.footer ? modal.footer : "",
+          animation: modal.animation.name,
+        },
+      ];
+    });
+  };
+
+  const removeModal = (id) => {
+    setAnimation({ ...animation, isOut: true });
+    setModal((prevModal) => {
+      return prevModal.map((modal) => {
+        if (modal.id === id) {
+          return {
+            ...modal,
+            isVisible: false,
+          };
+        } else {
+          return modal;
+        }
+      });
+    });
+    setTimeout(() => {
+      setAnimation({ ...animation, finished: true });
+      setModal((prevModal) => {
+        return prevModal.filter((modal) => modal.id !== id);
+      });
+    }, animation.duration);
+  };
+
+  useImperativeHandle(ref, () => ({
+    openModal: (modal) => {
+      addModal(modal);
+    },
+    closeModal: (id) => {
+      removeModal(id);
+    },
+  }));
+
+  useUpdateEffect(() => {
+    let backContentClass =
+      animation.name === "uncovering"
+        ? "uncovering-modal-back-content"
+        : animation.name === "revealing"
+        ? "revealing-modal-back-content"
+        : animation.name === "blowUp"
+        ? "blowUp-modal-back-content"
+        : "";
+
+    let backContentOutClass =
+      animation.name === "uncovering"
+        ? "uncovering-out-modal-back-content"
+        : animation.name === "revealing"
+        ? "revealing-out-modal-back-content"
+        : animation.name === "blowUp"
+        ? "blowUp-out-modal-back-content"
+        : "";
+
+    // section: logic for ending animation
+    if (animation.isOut) {
+      document.getElementById("modal-container")?.classList.add("out");
+      if (
+        animation.name === "uncovering" ||
+        animation.name === "revealing" ||
+        animation.name === "blowUp"
+      ) {
+        document
+          .getElementById("modal-bContent")
+          .classList.remove(backContentClass);
+
+        document
+          .getElementById("modal-bContent")
+          ?.classList.add(backContentOutClass);
+      }
+    }
+    // section: logic for removing classes after animation is finished and resetting animation state
+    else if (animation.finished) {
+      document
+        .getElementById("modal-container")
+        ?.classList.remove(animation.name, "out");
+      if (
+        animation.name === "uncovering" ||
+        animation.name === "revealing" ||
+        animation.name === "blowUp"
+      ) {
+        document
+          .getElementById("modal-bContent")
+          ?.classList.remove(backContentOutClass);
+      }
+      setAnimation({
+        name: "",
+        duration: 500,
+        isOut: false,
+        finished: false,
+      });
+    }
+    // section: logic for starting animation
+    else if (animation.name !== "") {
+      document.getElementById("modal-container")?.classList.add(animation.name);
+      if (
+        animation.name === "uncovering" ||
+        animation.name === "revealing" ||
+        animation.name === "blowUp"
+      ) {
+        document
+          .getElementById("modal-bContent")
+          .classList.add(backContentClass);
+      }
+    }
+  }, [animation]);
+
+  return loaded ? (
+    ReactDOM.createPortal(
+      <div className="modalContainer" id="modal-container">
+        {modal.map((modal) => (
+          <Modal
+            key={modal.id}
+            id={modal.id}
+            title={modal.title}
+            body={modal.body}
+            footer={modal.footer}
+            isVisible={modal.isVisible}
+            onClose={() => removeModal(modal.id)}
+          />
+        ))}
+      </div>,
+      document.getElementById(portalId)
+    )
+  ) : (
+    <></>
   );
-}
+});
+
+export const modalAnimation = {
+  unfolding: {
+    name: "unfolding",
+    duration: 1300,
+  },
+  revealing: {
+    name: "revealing",
+    duration: 500,
+  },
+  uncovering: {
+    name: "uncovering",
+    duration: 500,
+  },
+  blowUp: {
+    name: "blowUp",
+    duration: 500,
+  },
+  meep: {
+    name: "meep",
+    duration: 500,
+  },
+  sketch: {
+    name: "sketch",
+    duration: 500,
+  },
+  bond: {
+    name: "bond",
+    duration: 2000,
+  },
+};

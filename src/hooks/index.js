@@ -47,6 +47,6 @@ export * from "./use-step";
 
 export * from "./use-uuid";
 
-export * from "./use-toast-portal";
+export * from "./use-portal";
 
 export * from "./use-toast-auto-close";

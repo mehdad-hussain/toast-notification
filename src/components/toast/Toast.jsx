@@ -1,8 +1,7 @@
 // prettier-ignore
-// import {  XMarkIcon } from "@heroicons/react/24/solid";
-
-// prettier-ignore
 import { CheckCircleIcon, ExclamationCircleIcon, InformationCircleIcon, WarningSignIcon, XMarkIcon, } from "assets";
+
+// import: local files
 import { useDarkMode } from "hooks";
 import { joinClasses } from "util";
 
@@ -50,7 +49,7 @@ export const Toast = (props) => {
 
   return (
     <>
-      <div className={classes} id="toast">
+      <div className={classes}>
         <CheckCircleIcon
           className={joinClasses(
             "w-8 h-8 fill-green-500/70 stroke-1",

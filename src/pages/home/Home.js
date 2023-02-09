@@ -10,8 +10,7 @@ export const Home = () => {
       <div className="grid items-center justify-center w-full grid-cols-4 gap-2 mt-20 h-1/2 justify-items-center">
         <BtnOutline
           onClick={() => {
-            toast.current.error({
-              message: " It's a Error Message ",
+            toast.current.error(" It's a Error Message", {
               timer: 3,
             });
           }}
@@ -25,8 +24,7 @@ export const Home = () => {
 
         <BtnSolid
           onClick={() => {
-            positionedToast.topLeft.current.info({
-              message: " It's a Successful Message",
+            positionedToast.topLeft.current.info("It's a info Message", {
               isAutoClose: false,
             });
           }}
@@ -40,23 +38,21 @@ export const Home = () => {
 
         <BtnOutline
           onClick={() => {
-            toast.current.info({
-              message:
-                " It's a Info Message, it will be closed after 7s .. Lorem ipsum dolor sit amet",
-            });
+            toast.current.info(
+              "It's a Info Message, it will be closed after 7s .. Lorem ipsum dolor sit amet"
+            );
           }}
           bgColor="bg-blue-500"
           text="text-blue-500 text-xs font-bold"
           padding="px-6 py-3"
           borderRadius="rounded"
         >
-          Add Info Toast (7s) default position
+          Add Info Toast default position & timer
         </BtnOutline>
 
         <BtnSolid
           onClick={() => {
-            toast.current.warn({
-              message: " It's a Warning Message",
+            toast.current.warn("It's a Warning Message", {
               isAutoClose: false,
             });
           }}
@@ -70,10 +66,12 @@ export const Home = () => {
 
         <BtnSolid
           onClick={() => {
-            positionedToast.bottomCenter.current.error({
-              message: " It's a Error Message ",
-              timer: 3,
-            });
+            positionedToast.bottomCenter.current.error(
+              " It's a Error Message ",
+              {
+                timer: 3,
+              }
+            );
           }}
           bgColor="bg-stone-500"
           text="text-white text-xs font-bold"
@@ -85,11 +83,13 @@ export const Home = () => {
 
         <BtnSolid
           onClick={() => {
-            positionedToast.topCenter.current.success({
-              message: " It's a Successful Message",
-              timer: 5,
-              isAutoClose: false,
-            });
+            positionedToast.topCenter.current.success(
+              " It's a Successful Message",
+              {
+                timer: 5,
+                isAutoClose: false,
+              }
+            );
           }}
           bgColor="bg-teal-500"
           text="text-white text-xs font-bold"
@@ -101,11 +101,12 @@ export const Home = () => {
 
         <BtnOutline
           onClick={() => {
-            positionedToast.topLeft.current.info({
-              message:
-                " It's a Info Message, it will be closed after 7s .. Lorem ipsum dolor sit amet",
-              timer: 7,
-            });
+            positionedToast.topLeft.current.info(
+              "It's a Info Message, it will be closed after 7s .. Lorem ipsum dolor sit amet",
+              {
+                timer: 7,
+              }
+            );
           }}
           bgColor="bg-purple-500"
           text="text-purple-500 text-xs font-bold"
@@ -117,8 +118,7 @@ export const Home = () => {
 
         <BtnOutline
           onClick={() => {
-            positionedToast.bottomLeft.current.warn({
-              message: " It's a Warning Message",
+            positionedToast.bottomLeft.current.warn(" It's a Warning Message", {
               isAutoClose: false,
             });
           }}
@@ -132,8 +132,7 @@ export const Home = () => {
 
         <BtnOutline
           onClick={() => {
-            positionedToast.bottomRight.current.error({
-              message: " It's a Warning Message",
+            positionedToast.bottomRight.current.error(" It's a error Message", {
               isAutoClose: false,
             });
           }}
@@ -147,10 +146,12 @@ export const Home = () => {
 
         <BtnSolid
           onClick={() => {
-            positionedToast.bottomCenter.current.success({
-              message: " It's a Successful Message",
-              isAutoClose: false,
-            });
+            positionedToast.bottomCenter.current.success(
+              " It's a Successful Message",
+              {
+                isAutoClose: false,
+              }
+            );
           }}
           bgColor="bg-fuchsia-500"
           text="text-white text-xs font-bold"
@@ -162,17 +163,19 @@ export const Home = () => {
 
         <BtnOutline
           onClick={() => {
-            positionedToast.bottomCenter.current.info({
-              message:
-                " It's a Info Message, it will be closed after 7s .. Lorem ipsum dolor sit amet",
-            });
+            positionedToast.bottomCenter.current.info(
+              "It's a Info Message, it will be closed after 7s .. Lorem ipsum dolor sit amet",
+              {
+                timer: 7,
+              }
+            );
           }}
           bgColor="bg-neutral-500"
           text="text-neutral-500 text-xs font-bold"
           padding="px-6 py-3"
           borderRadius="rounded-sm"
         >
-          Add Info Toast (7s) bottom-center
+          Info Toast (7s) bottom-center
         </BtnOutline>
       </div>
     </>

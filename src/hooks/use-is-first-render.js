@@ -11,3 +11,5 @@ export function useIsFirstRender() {
 
   return isFirst.current;
 }
+
+// idea: Simple React hook that return a boolean; True at the mount time Then always false.
