@@ -6,7 +6,7 @@ export const Modal = (props) => {
     <>
       <div className="modal-background" onClick={onClose}>
         {/*content*/}
-        <div className="relative flex flex-col w-auto max-w-sm mx-auto my-6 bg-white border-0 rounded-lg shadow-lg outline-none focus:outline-none modal">
+        <div className="relative z-20 flex flex-col w-auto max-w-sm mx-auto my-6 bg-white border-0 rounded-lg shadow-lg outline-none focus:outline-none modal">
           {/*header*/}
           <div className="flex items-start justify-between p-5 border-b border-solid rounded-t border-slate-200">
             <h3 className="text-3xl font-semibold">Modal Title</h3>

@@ -43,7 +43,7 @@ export const usePortal = (type, position) => {
     const div = document.createElement("div");
 
     div.id = portalId;
-    div.style = `position: fixed; ${positionClass}`;
+    div.style = `position: fixed;  ${positionClass}`;
     document.getElementsByTagName("body")[0].prepend(div);
     setLoaded(true);
 

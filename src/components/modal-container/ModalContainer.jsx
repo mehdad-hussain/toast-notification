@@ -19,6 +19,10 @@ export const ModalContainer = forwardRef((props, ref) => {
   const { loaded, portalId } = usePortal("modal", "center");
 
   const addModal = (modal) => {
+    if (modal.length > 0) {
+      return;
+    }
+
     setModal((prevModal) => {
       setAnimation({
         ...animation,
@@ -98,13 +102,9 @@ export const ModalContainer = forwardRef((props, ref) => {
         animation.name === "revealing" ||
         animation.name === "blowUp"
       ) {
-        document
-          .getElementById("modal-bContent")
-          .classList.remove(backContentClass);
+        document.getElementById("root").classList.remove(backContentClass);
 
-        document
-          .getElementById("modal-bContent")
-          ?.classList.add(backContentOutClass);
+        document.getElementById("root")?.classList.add(backContentOutClass);
       }
     }
     // section: logic for removing classes after animation is finished and resetting animation state
@@ -117,9 +117,7 @@ export const ModalContainer = forwardRef((props, ref) => {
         animation.name === "revealing" ||
         animation.name === "blowUp"
       ) {
-        document
-          .getElementById("modal-bContent")
-          ?.classList.remove(backContentOutClass);
+        document.getElementById("root")?.classList.remove(backContentOutClass);
       }
       setAnimation({
         name: "",
@@ -136,9 +134,7 @@ export const ModalContainer = forwardRef((props, ref) => {
         animation.name === "revealing" ||
         animation.name === "blowUp"
       ) {
-        document
-          .getElementById("modal-bContent")
-          .classList.add(backContentClass);
+        document.getElementById("root").classList.add(backContentClass);
       }
     }
   }, [animation]);
