@@ -37,3 +37,10 @@ export const ToastContainer = (props) => {
     </>
   );
 };
+
+export const toastAnimation = {
+  slide: "slide",
+  zoom: "zoom",
+  flip: "flip",
+  bounce: "bounce",
+};

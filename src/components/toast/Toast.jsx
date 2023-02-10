@@ -8,43 +8,25 @@ import { joinClasses } from "util";
 import styles from "./Toast.module.scss";
 
 export const Toast = (props) => {
-  const { message, mode, isAutoClose, timer, isVisible, onClose, position } =
-    props;
+  // prettier-ignore
+  const { message, mode, isAutoClose, timer, isVisible, onClose, position, animation } = props;
 
   const { isDarkMode } = useDarkMode();
+
+  console.log(`show-${animation}-${position}`);
 
   const classes = joinClasses(
     styles.toast,
     isDarkMode ? styles[`toast-${mode}-dark`] : styles[`toast-${mode}`],
     isVisible === true
-      ? position === "top-right"
-        ? styles["toast-visible-right"]
-        : position === "top-left"
-        ? styles["toast-visible-left"]
-        : position === "bottom-right"
-        ? styles["toast-visible-right"]
-        : position === "bottom-left"
-        ? styles["toast-visible-left"]
-        : position === "top-center"
-        ? styles["toast-visible-top"]
-        : styles["toast-visible-bottom"]
-      : position === "top-right"
-      ? styles["toast-hidden-right"]
-      : position === "top-left"
-      ? styles["toast-hidden-left"]
-      : position === "bottom-right"
-      ? styles["toast-hidden-right"]
-      : position === "bottom-left"
-      ? styles["toast-hidden-left"]
-      : position === "top-center"
-      ? styles["toast-hidden-top"]
-      : styles["toast-hidden-bottom"]
+      ? styles[`show-${animation}-${position}`]
+      : styles[`hide-${animation}-${position}`]
   );
 
   const progressClasses = joinClasses(
-    styles.toast__progress,
-    styles[`toast__progress-${mode}`],
-    `before:animate-[progress_${timer}s_linear_forwards]`
+    styles.progress,
+    styles[`sec-${timer}`],
+    styles[`progress-${mode}`]
   );
 
   return (
@@ -85,7 +67,7 @@ export const Toast = (props) => {
           <p className="ml-2 line-clamp-4">{message}</p>
         </div>
         <button onClick={onClose} className="justify-self-end">
-          <XMarkIcon className="w-5 h-5 stroke-2 fill-gray-600" />
+          <XMarkIcon className="w-5 h-5 stroke-2 fill-gray-500 hover:fill-zinc-900 dark:fill-gray-300 dark:hover:fill-gray-100" />
         </button>
 
         {isAutoClose === true ? (

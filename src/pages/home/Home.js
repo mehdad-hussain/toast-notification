@@ -1,6 +1,6 @@
 import { useContext, useRef } from "react";
 // prettier-ignore
-import { BtnOutline, ModalContainer, ToastContext, modalAnimation,modalSize } from "components";
+import { BtnOutline, ModalContainer, ToastContext, modalAnimation,modalSize, toastAnimation } from "components";
 import { BtnSolid } from "components/btn-solid/BtnSolid";
 
 export const Home = () => {
@@ -14,6 +14,7 @@ export const Home = () => {
         <BtnOutline
           onClick={() => {
             toast.current.error(" It's a Error Message", {
+              animation: toastAnimation.slide,
               timer: 3,
             });
           }}
@@ -22,13 +23,14 @@ export const Home = () => {
           padding="px-6 py-3"
           borderRadius="rounded"
         >
-          Error Toast (3s) default position
+          Error Toast (3s) default position slide
         </BtnOutline>
 
         <BtnSolid
           onClick={() => {
             positionedToast.topLeft.current.info("It's a info Message", {
               isAutoClose: false,
+              animation: toastAnimation.bounce,
             });
           }}
           bgColor="bg-cyan-500"
@@ -36,7 +38,7 @@ export const Home = () => {
           padding="px-6 py-3"
           borderRadius="rounded-xl"
         >
-          Success Toast (no auto close) top-left
+          Success Toast (no auto close) top-left bounce
         </BtnSolid>
 
         <BtnOutline
@@ -57,6 +59,7 @@ export const Home = () => {
           onClick={() => {
             toast.current.warn("It's a Warning Message", {
               isAutoClose: false,
+              animation: toastAnimation.flip,
             });
           }}
           bgColor="bg-yellow-500"
@@ -64,7 +67,7 @@ export const Home = () => {
           padding="px-6 py-3"
           borderRadius="rounded"
         >
-          Warning Toast (no auto close) default position
+          Warning Toast (no auto close) default position flip
         </BtnSolid>
 
         <BtnSolid
@@ -73,6 +76,7 @@ export const Home = () => {
               " It's a Error Message ",
               {
                 timer: 3,
+                animation: toastAnimation.flip,
               }
             );
           }}
@@ -81,7 +85,7 @@ export const Home = () => {
           padding="px-6 py-3"
           borderRadius="rounded"
         >
-          Error Toast (3s) bottom-center
+          Error Toast (3s) bottom-center flip
         </BtnSolid>
 
         <BtnSolid
@@ -91,6 +95,7 @@ export const Home = () => {
               {
                 timer: 5,
                 isAutoClose: false,
+                animation: toastAnimation.zoom,
               }
             );
           }}
@@ -99,7 +104,7 @@ export const Home = () => {
           padding="px-6 py-3"
           borderRadius="rounded"
         >
-          Success Toast (no auto close) top-center
+          Success Toast (no auto close) top-center zoom
         </BtnSolid>
 
         <BtnOutline
@@ -307,7 +312,7 @@ export const Home = () => {
               size: modalSize.md,
               title: "Bond modal",
               content:
-                "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores, esse?Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores, esse?",
+                "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores, esse?Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores, esse?Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores, esse?Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores, esse?Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores, esse?Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores, esse?Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores, esse?Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores, esse?Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores, esse?Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores, esse?Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores, esse?Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores, esse?",
               footer: "Modal Footer",
               animation: modalAnimation.bond,
               modalBgColor: "bg-gray-500",

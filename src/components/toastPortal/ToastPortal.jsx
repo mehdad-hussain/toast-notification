@@ -66,6 +66,7 @@ export const ToastPortal = forwardRef((props, ref) => {
           isAutoClose: toastObj?.isAutoClose === false ? false : true,
           mode: "success",
           isVisible: true,
+          animation: toastObj?.animation ? toastObj.animation : "slide",
         },
       ]);
     },
@@ -80,6 +81,7 @@ export const ToastPortal = forwardRef((props, ref) => {
           // idea: as if isAutoClose equal to false it's a falsy value so we need to check if it's equal to true or not
           mode: "info",
           isVisible: true,
+          animation: toastObj?.animation ? toastObj.animation : "slide",
         },
       ]);
     },
@@ -93,6 +95,7 @@ export const ToastPortal = forwardRef((props, ref) => {
           isAutoClose: toastObj?.isAutoClose === false ? false : true,
           mode: "warning",
           isVisible: true,
+          animation: toastObj?.animation ? toastObj.animation : "slide",
         },
       ]);
     },
@@ -106,6 +109,7 @@ export const ToastPortal = forwardRef((props, ref) => {
           isAutoClose: toastObj?.isAutoClose === false ? false : true,
           mode: "error",
           isVisible: true,
+          animation: toastObj?.animation ? toastObj.animation : "slide",
         },
       ]);
     },
@@ -133,6 +137,7 @@ export const ToastPortal = forwardRef((props, ref) => {
             onClose={() => removeToast(toast.id)}
             isVisible={toast.isVisible}
             position={position}
+            animation={toast.animation}
           />
         ))}
       </div>,

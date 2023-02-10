@@ -200,7 +200,7 @@
     .modal {
       height: 96px;
       width: 96px;
-      border-radius: 96px;
+      border-radius: 50%;
       overflow: hidden;
       animation: bondJamesBond 1.5s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
       .modal-content > * {
@@ -217,8 +217,8 @@
       }
       .modal {
         border-radius: 8px;
-        height: max-content;
-        width: max-content;
+        height: fit-content;
+        width: fit-content;
         animation: killShot 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
         .modal-content > * {
           animation: modalContentFadeOut 0.5s 0.5
@@ -513,19 +513,19 @@
   }
   80% {
     transform: translateX(0px);
-    border-radius: 96px;
+    border-radius: 50%;
     height: 96px;
     width: 96px;
   }
   90% {
     border-radius: 8px;
-    height: 25%;
-    width: 25%;
+    height: -70%;
+    width: -70%;
   }
   100% {
     border-radius: 8px;
-    height: max-content;
-    width: max-content;
+    height: fit-content;
+    width: fit-content;
   }
 }
 
