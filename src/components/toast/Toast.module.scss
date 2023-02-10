@@ -19,11 +19,12 @@ $classes: (
   $info: "border border-blue-400 bg-blue-100/90",
   $info-dark: "bg-gradient-to-r from-blue-900/70 to-slate-900",
 );
-@each $key, $value in $classes {
-  .#{$key} {
-    @apply #{$value};
-  }
-}
+
+// @each $key, $value in $classes {
+//   .#{$key} {
+//     @apply #{$value};
+//   }
+// }
 
 $progressBarDuration: (
   "sec-3": "before:animate-[progress_3s_linear_forwards]",
@@ -36,11 +37,11 @@ $progressBarDuration: (
   "sec-10": "before:animate-[progress_10s_linear_forwards]",
 );
 
-@each $key, $value in $progressBarDuration {
-  .#{$key} {
-    @apply #{$value};
-  }
-}
+// @each $key, $value in $progressBarDuration {
+//   .#{$key} {
+//     @apply #{$value};
+//   }
+// }
 
 $animationTypes: (
   "slide": "slide",
