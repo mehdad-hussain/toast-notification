@@ -61,7 +61,7 @@ export const Toast = (props) => {
         />
         <div
           className={
-            isDarkMode ? styles.toast__content_dark : styles.toast__content
+            isDarkMode ? styles.toast_content_dark : styles.toast_content
           }
         >
           <p className="ml-2 line-clamp-4">{message}</p>

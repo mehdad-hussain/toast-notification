@@ -1,47 +1,111 @@
 @import "./_keyframes.scss";
 
-$success: "toast-success";
-$success-dark: "toast-success-dark";
-$error: "toast-error";
-$error-dark: "toast-error-dark";
-$warning: "toast-warning";
-$warning-dark: "toast-warning-dark";
-$info: "toast-info";
-$info-dark: "toast-info-dark";
+// section: toast basic styles
+.toast {
+  @apply p-4 min-w-[286px] max-w-max rounded-md shadow-lg cursor-pointer font-medium grid grid-cols-7 items-center overflow-hidden;
 
-$classes: (
-  $success: "border border-green-400 bg-green-100/90",
-  $success-dark: "bg-gradient-to-r from-teal-700 to-slate-900",
-  $error: "border border-red-400 bg-red-100/90",
-  $error-dark: "bg-gradient-to-r from-rose-900/70 to-slate-900",
-  $warning: "border border-orange-300 bg-orange-100/90",
-  $warning-dark: "bg-gradient-to-r from-yellow-900/70 to-slate-900",
-  $info: "border border-blue-400 bg-blue-100/90",
-  $info-dark: "bg-gradient-to-r from-blue-900/70 to-slate-900",
-);
+  &_content {
+    @apply text-black/70 text-sm font-bold col-span-5;
+  }
 
-// @each $key, $value in $classes {
-//   .#{$key} {
-//     @apply #{$value};
-//   }
-// }
+  &_content_dark {
+    @apply text-white text-sm font-bold col-span-5;
+  }
+}
 
-$progressBarDuration: (
-  "sec-3": "before:animate-[progress_3s_linear_forwards]",
-  "sec-4": "before:animate-[progress_4s_linear_forwards]",
-  "sec-5": "before:animate-[progress_5s_linear_forwards]",
-  "sec-6": "before:animate-[progress_6s_linear_forwards]",
-  "sec-7": "before:animate-[progress_7s_linear_forwards]",
-  "sec-8": "before:animate-[progress_8s_linear_forwards]",
-  "sec-9": "before:animate-[progress_9s_linear_forwards]",
-  "sec-10": "before:animate-[progress_10s_linear_forwards]",
-);
+// section: toast styles according to modes
+.toast-success {
+  @apply border border-green-400 bg-green-100/90;
+}
 
-// @each $key, $value in $progressBarDuration {
-//   .#{$key} {
-//     @apply #{$value};
-//   }
-// }
+.toast-success-dark {
+  @apply bg-gradient-to-r from-teal-700 to-slate-900;
+}
+
+.toast-error {
+  @apply border border-red-400 bg-red-100/90;
+}
+
+.toast-error-dark {
+  @apply bg-gradient-to-r from-rose-900/70 to-slate-900;
+}
+
+.toast-warning {
+  @apply border border-orange-300 bg-orange-100/90;
+}
+
+.toast-warning-dark {
+  @apply bg-gradient-to-r from-yellow-900/70 to-slate-900;
+}
+
+.toast-info {
+  @apply border border-blue-400 bg-blue-100/90;
+}
+
+.toast-info-dark {
+  @apply bg-gradient-to-r from-blue-900/70 to-slate-900;
+}
+
+// section: progress bar styles
+.progress {
+  @apply absolute bottom-0 left-0 w-full h-0.5 bg-slate-500 rounded-br-md rounded-bl-md;
+
+  &::before {
+    @apply content-[""] absolute bottom-0 right-0 h-full w-full;
+  }
+
+  &-success::before {
+    @apply bg-green-400;
+  }
+
+  &-error::before {
+    @apply bg-red-500;
+  }
+
+  &-warning::before {
+    @apply bg-orange-600;
+  }
+
+  &-info::before {
+    @apply bg-blue-400;
+  }
+}
+
+// section: progress bar animation
+
+.sec-3 {
+  @apply before:animate-[progress_3s_linear_forwards];
+}
+
+.sec-4 {
+  @apply before:animate-[progress_4s_linear_forwards];
+}
+
+.sec-5 {
+  @apply before:animate-[progress_5s_linear_forwards];
+}
+
+.sec-6 {
+  @apply before:animate-[progress_6s_linear_forwards];
+}
+
+.sec-7 {
+  @apply before:animate-[progress_7s_linear_forwards];
+}
+
+.sec-8 {
+  @apply before:animate-[progress_8s_linear_forwards];
+}
+
+.sec-9 {
+  @apply before:animate-[progress_9s_linear_forwards];
+}
+
+.sec-10 {
+  @apply before:animate-[progress_10s_linear_forwards];
+}
+
+// section: toast animation classes
 
 $animationTypes: (
   "slide": "slide",
@@ -126,41 +190,5 @@ $animationTypes: (
         @include timing-function($key);
       }
     }
-  }
-}
-
-.toast {
-  @apply p-4 min-w-[286px] max-w-max rounded-md shadow-lg cursor-pointer font-medium grid grid-cols-7 items-center overflow-hidden;
-
-  &__content {
-    @apply text-black/70 text-sm font-bold col-span-5;
-  }
-
-  &__content_dark {
-    @apply text-white text-sm font-bold col-span-5;
-  }
-}
-
-.progress {
-  @apply absolute bottom-0 left-0 w-full h-0.5 bg-slate-500 rounded-br-md rounded-bl-md;
-
-  &::before {
-    @apply content-[""] absolute bottom-0 right-0 h-full w-full;
-  }
-
-  &-success::before {
-    @apply bg-green-400;
-  }
-
-  &-error::before {
-    @apply bg-red-500;
-  }
-
-  &-warning::before {
-    @apply bg-orange-600;
-  }
-
-  &-info::before {
-    @apply bg-blue-400;
   }
 }
