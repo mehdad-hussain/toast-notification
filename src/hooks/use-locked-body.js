@@ -51,3 +51,12 @@ export function useLockedBody(
 
   return [locked, setLocked];
 }
+
+// idea: This React hook is used to block the scrolling of the page.A good example of a use case is when you need to open a modal.
+
+/**
+ * For flexibility, this hook offers 2 APIs:
+
+      1. Use it as we would use a useState (example 1)
+      2. Use it with our own logic, coming from a props or redux for example (example 2)
+ */

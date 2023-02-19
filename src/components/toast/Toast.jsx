@@ -13,8 +13,6 @@ export const Toast = (props) => {
 
   const { isDarkMode } = useDarkMode();
 
-  console.log(`show-${animation}-${position}`);
-
   const classes = joinClasses(
     styles.toast,
     isDarkMode ? styles[`toast-${mode}-dark`] : styles[`toast-${mode}`],
@@ -71,7 +69,7 @@ export const Toast = (props) => {
         </button>
 
         {isAutoClose === true ? (
-          <div className={joinClasses(progressClasses)}></div>
+          <div name="progress" className={joinClasses(progressClasses)}></div>
         ) : null}
       </div>
     </>

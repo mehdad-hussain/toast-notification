@@ -2,13 +2,15 @@ import React, { useEffect } from "react";
 // prettier-ignore
 
 import { BtnSolid, ToastContainer } from "components";
-import { useDarkMode } from "hooks";
+import { useDarkMode, useDocumentTitle } from "hooks";
 import { Home } from "pages";
 
 export const ToastContext = React.createContext();
 
 function App() {
   const { isDarkMode, toggle, enable, disable, reset } = useDarkMode();
+
+  useDocumentTitle("Notification");
 
   useEffect(() => {
     if (isDarkMode) {

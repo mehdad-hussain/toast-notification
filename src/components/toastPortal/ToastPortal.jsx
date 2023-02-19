@@ -67,6 +67,10 @@ export const ToastPortal = forwardRef((props, ref) => {
           mode: "success",
           isVisible: true,
           animation: toastObj?.animation ? toastObj.animation : "slide",
+          position: position,
+          startTime: Date.now(),
+          remainingTime: toastObj?.timer ? toastObj.timer * 1000 : 5 * 1000,
+          timerId: "",
         },
       ]);
     },
@@ -82,6 +86,10 @@ export const ToastPortal = forwardRef((props, ref) => {
           mode: "info",
           isVisible: true,
           animation: toastObj?.animation ? toastObj.animation : "slide",
+          position: position,
+          startTime: Date.now(),
+          remainingTime: toastObj?.timer ? toastObj.timer * 1000 : 5 * 1000,
+          timerId: "",
         },
       ]);
     },
@@ -96,6 +104,10 @@ export const ToastPortal = forwardRef((props, ref) => {
           mode: "warning",
           isVisible: true,
           animation: toastObj?.animation ? toastObj.animation : "slide",
+          position: position,
+          startTime: Date.now(),
+          remainingTime: toastObj?.timer ? toastObj.timer * 1000 : 5 * 1000,
+          timerId: "",
         },
       ]);
     },
@@ -110,6 +122,10 @@ export const ToastPortal = forwardRef((props, ref) => {
           mode: "error",
           isVisible: true,
           animation: toastObj?.animation ? toastObj.animation : "slide",
+          position: position,
+          startTime: Date.now(),
+          remainingTime: toastObj?.timer ? toastObj.timer * 1000 : 5 * 1000,
+          timerId: "",
         },
       ]);
     },

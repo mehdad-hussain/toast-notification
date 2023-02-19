@@ -68,3 +68,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.paused::before {
+  animation-play-state: paused !important;
+}

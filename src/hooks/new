@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { usePageLeave } from "./use-page-leave";
+import { useUpdateEffect } from "./use-update-effect";
 
 export const useToastAutoClose = ({
   // isAutoClose,
@@ -10,17 +11,24 @@ export const useToastAutoClose = ({
   const [removing, setRemoving] = useState("");
   const [isOnPage, setIsOnPage] = useState(true);
 
-  // let timerId = useRef(null);
+  let timerId = useRef(null);
 
-  // let remainingTime = useRef(0);
+  let remainingTime = useRef(0);
   let startTime = useRef(0);
+
+  // const { isOnPage } = usePageLeave(() => {
+  //   // setIsOnPage(false);
+  //   console.log("Page left...");
+  // });
+
+  // console.log("rendered");
 
   const handleFocus = () => setIsOnPage(true);
   const handleBlur = () => {
     setIsOnPage(false);
   };
 
-  useEffect(() => {
+  useUpdateEffect(() => {
     window.addEventListener("focus", handleFocus);
     window.addEventListener("blur", handleBlur);
     return () => {
@@ -29,7 +37,17 @@ export const useToastAutoClose = ({
     };
   });
 
-  useEffect(() => {
+  // const pauseTimer = (start) => {
+  //   remaining -= Date.now() - start;
+  //   return remaining, start;
+  // };
+
+  // const resumeTimer = () => {
+  //   console.log("timer resumed");
+  //   return start = Date.now();
+  // };
+
+  useUpdateEffect(() => {
     // if (isAutoClose && toasts.length > 0) {
     //   const timerId = setTimeout(() => {
     //     removeToast(toasts[0].id);
@@ -43,62 +61,49 @@ export const useToastAutoClose = ({
     let autoCloseToasts = toasts.filter((toast) => toast.isAutoClose);
 
     if (autoCloseToasts.length > 0) {
-      // const toast = autoCloseToasts[autoCloseToasts.length - 1];
+      const toast = autoCloseToasts[autoCloseToasts.length - 1];
       // const id = toasts[0].id;
       // idea: we can use toasts[0].id but then we will face problem when we have multiple toasts, so we need to use toasts[toasts.length - 1].id, so that we can set timeout for the last toast. as toasts[0].id will set timeout for the first toast only and only after removing the first toast we can set timeout for the second toast and so on.
-      console.log("autoCloseToasts", autoCloseToasts);
 
-      // startTime.current = Date.now();
       if (isOnPage === true) {
-        autoCloseToasts.forEach((toast) => {
-          console.log("remaining", toast.remainingTime);
-          // startTime.current = Date.now();
-          // console.log("start timer", startTime.current);
-
-          toast.startTime = Date.now();
-          document.getElementsByName("progress").forEach((progress) => {
-            progress.classList.remove("paused");
-          });
-
-          toast.timerId = setTimeout(() => {
-            console.log(
-              "timer before set removing",
-              toast.timerId,
-              toast.remainingTime
-            );
+        startTime.current = Date.now();
+        console.log(remainingTime.current);
+        document.querySelector("#progress").classList.remove("paused");
+        timerId.current = setTimeout(
+          () => {
             setRemoving(toast.id);
-            // toast.remainingTime = 0;
-          }, toast.remainingTime);
-
-          // console.log(toast.timerId);
-        });
+            remainingTime.current = 0;
+          },
+          remainingTime.current !== 0
+            ? remainingTime.current
+            : toast.timer * 1000
+        );
       } else {
-        autoCloseToasts.forEach((toast) => {
-          // console.log(toast.timerId);
+        console.log(timerId);
 
-          let pauseTime = Date.now();
-          console.log("start timer & -", toast.startTime, pauseTime);
+        let pauseTime = Date.now();
+        console.log(startTime, pauseTime);
 
-          console.log("expired", pauseTime - toast.startTime);
+        console.log(toast.timer * 1000);
+        console.log(pauseTime - startTime.current);
 
-          console.log("remaining before calc", toast.remainingTime);
+        remainingTime.current =
+          remainingTime.current !== 0
+            ? remainingTime.current - (pauseTime - startTime.current)
+            : toast.timer * 1000 - (pauseTime - startTime.current);
 
-          toast.remainingTime =
-            toast.remainingTime - (pauseTime - toast.startTime);
-
-          console.log(" remaining", toast.remainingTime);
-          clearTimeout(toast.timerId);
-          toast.timerId = null;
-          document.getElementsByName("progress").forEach((progress) => {
-            progress.classList.add("paused");
-          });
-        });
-        console.log(autoCloseToasts, "after cleared");
+        console.log(" remaining", remainingTime.current);
+        clearTimeout(timerId.current);
+        document.querySelector("#progress").classList.add("paused");
       }
-    }
-  }, [isOnPage]);
 
-  useEffect(() => {
+      // setTimeout(() => {
+      //   setRemoving(toast.id);
+      // }, remaining);
+    }
+  }, [toasts, isOnPage]);
+
+  useUpdateEffect(() => {
     if (removing) {
       setToasts((prevToasts) => {
         return prevToasts.map((toast) => {

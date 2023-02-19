@@ -89,9 +89,13 @@
   @apply before:animate-[progress_6s_linear_forwards] w-full;
 }
 
-.sec-7 {
-  @apply before:animate-[progress_7s_linear_forwards] w-full;
+// .sec-7 {
+// @apply before:animate-[progress_7s_linear_forwards] w-full;
+.sec-7::before {
+  // content: var(--tw-content);
+  animation: progress 7s linear forwards;
 }
+// }
 
 .sec-8 {
   @apply before:animate-[progress_8s_linear_forwards] w-full;
