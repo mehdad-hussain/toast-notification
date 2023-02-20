@@ -1,7 +1,7 @@
-import { forwardRef, useImperativeHandle, useState } from "react";
+import { forwardRef, useEffect, useImperativeHandle, useState } from "react";
 import ReactDOM from "react-dom";
 
-import { usePortal, useUpdateEffect } from "hooks";
+import { usePortal } from "hooks";
 
 import { Modal } from "components";
 import { uuid } from "util";
@@ -41,6 +41,8 @@ export const ModalContainer = forwardRef((props, ref) => {
           footer: modal?.footer ? modal.footer : "",
           animation: modal.animation.name,
           bgColor: modal.bgColor ? modal.bgColor : "bg-white",
+          borderRadius: modal.borderRadius ? modal.borderRadius : "rounded-lg",
+          closeableBackdrop: modal.closeableBackdrop === false ? false : true,
         },
       ];
     });
@@ -79,7 +81,7 @@ export const ModalContainer = forwardRef((props, ref) => {
 
   // section: logic for animating modal with custom update effect hook
 
-  useUpdateEffect(() => {
+  useEffect(() => {
     let backContentClass =
       animation.name === "uncovering"
         ? "uncovering-modal-back-content"
@@ -156,6 +158,8 @@ export const ModalContainer = forwardRef((props, ref) => {
             footer={modal.footer}
             isVisible={modal.isVisible}
             bgColor={modal.bgColor}
+            borderRadius={modal.borderRadius}
+            closeableBackdrop={modal.closeableBackdrop}
             onClose={() => removeModal(modal.id)}
           />
         ))}

@@ -42,12 +42,17 @@ export const useToastAutoClose = ({
 
     let autoCloseToasts = toasts.filter((toast) => toast.isAutoClose);
 
+    console.log("autoCloseToasts", autoCloseToasts);
     if (autoCloseToasts.length > 0) {
       // const toast = autoCloseToasts[autoCloseToasts.length - 1];
       // const id = toasts[0].id;
       // idea: we can use toasts[0].id but then we will face problem when we have multiple toasts, so we need to use toasts[toasts.length - 1].id, so that we can set timeout for the last toast. as toasts[0].id will set timeout for the first toast only and only after removing the first toast we can set timeout for the second toast and so on.
       console.log("autoCloseToasts", autoCloseToasts);
 
+      // todo: we need to set timeout for each toast, so we need to create a function that will set timeout for each toast and then we can call that function in useEffect. So we will use useState to store the timerId and then we can use that timerId to clear the timeout.
+
+      // fix: dependency array problem
+      console.log("isOnPage", isOnPage);
       // startTime.current = Date.now();
       if (isOnPage === true) {
         autoCloseToasts.forEach((toast) => {
@@ -59,6 +64,9 @@ export const useToastAutoClose = ({
           document.getElementsByName("progress").forEach((progress) => {
             progress.classList.remove("paused");
           });
+
+          console.log("start timer", toast.startTime);
+          console.log("remaining", toast.remainingTime);
 
           toast.timerId = setTimeout(() => {
             console.log(

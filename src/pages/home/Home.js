@@ -1,14 +1,20 @@
 import { useContext, useRef } from "react";
 // prettier-ignore
-import { BtnOutline, ModalContainer, ToastContext, modalAnimation,modalSize, toastAnimation } from "components";
+import { BtnOutline, ModalContainer, ToastContext, modalAnimation,modalSize, toastAnimation, RenderWhen } from "components";
 import { BtnSolid } from "components/btn-solid/BtnSolid";
 
 export const Home = () => {
   const { toast, positionedToast } = useContext(ToastContext);
   const modalRef = useRef(null);
 
+  const x = 3;
   return (
     <>
+      <RenderWhen>
+        <RenderWhen.If isTrue={x === 2}>show If true</RenderWhen.If>
+        <RenderWhen.If isTrue={x === 4}>show If 4</RenderWhen.If>
+        <RenderWhen.If isTrue>show If false</RenderWhen.If>
+      </RenderWhen>
       <ModalContainer ref={modalRef} />
       <div className="grid items-center justify-center w-full grid-cols-4 gap-2 mt-20 h-1/2 justify-items-center">
         <BtnOutline
@@ -197,6 +203,9 @@ export const Home = () => {
                 "Modal Content Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores, esse?",
               footer: "Modal Footer",
               animation: modalAnimation.unfolding,
+              closeableBackdrop: false,
+              borderRadius: "rounded-tl-3xl rounded-br-3xl",
+              bgColor: "bg-lime-500",
             });
           }}
           bgColor="bg-emerald-500"
@@ -214,6 +223,7 @@ export const Home = () => {
               content: "Modal Content",
               footer: "Modal Footer",
               animation: modalAnimation.revealing,
+              bgColor: "bg-sky-500",
             });
           }}
           bgColor="bg-emerald-500"
@@ -296,7 +306,6 @@ export const Home = () => {
                 "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores, esse? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores, esse?Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores, esse?Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores, esse?",
               footer: "Modal Footer",
               animation: modalAnimation.sketch,
-              bgColor: "bg-white",
             });
           }}
           bgColor="bg-cyan-500"

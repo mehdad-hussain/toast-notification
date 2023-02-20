@@ -1,9 +1,13 @@
+import { XMarkIcon } from "assets";
 import { BtnOutline, BtnSolid } from "components";
 import React from "react";
 import { joinClasses } from "util";
 
 export const Modal = (props) => {
-  const { onClose, size, bgColor, title, content, footer } = props;
+  // prettier-ignore
+  const { onClose, size, bgColor, title, content, footer, closeableBackdrop,borderRadius } = props;
+
+  console.log(closeableBackdrop);
 
   let sizeClass =
     size === "1200px"
@@ -17,12 +21,15 @@ export const Modal = (props) => {
       : "max-w-[384px]";
 
   let modalBgColor = bgColor;
+  let modalBorderRadius = borderRadius;
+
   let textColor = modalBgColor.includes("white")
     ? "text-slate-600"
     : "text-white";
 
   const classes = joinClasses(
-    "w-auto mx-auto border-0 rounded-lg shadow-lg outline-none p-1 focus:outline-none modal",
+    "w-auto mx-auto border-0 shadow-lg outline-none p-1 focus:outline-none modal",
+    modalBorderRadius,
     sizeClass,
     modalBgColor,
     textColor
@@ -48,15 +55,10 @@ export const Modal = (props) => {
         {/* section: header*/}
         {title !== "" ? (
           <div className="modal-content">
-            <div className="flex items-start justify-between p-3 border-b border-solid rounded-t border-slate-100 ">
+            <div className="flex items-center justify-between p-3 border-b border-solid rounded-t border-slate-100 ">
               <h3 className="text-3xl font-semibold">{title}</h3>
-              <button
-                className="float-right p-1 ml-auto text-3xl font-semibold leading-none bg-transparent border-0 outline-none opacity-5 focus:outline-none"
-                onClick={() => false}
-              >
-                <span className="block w-6 h-6 text-2xl bg-transparent outline-none opacity-5 focus:outline-none">
-                  ×
-                </span>
+              <button className="" onClick={onClose}>
+                <XMarkIcon className="w-5 h-5 stroke-2 fill-gray-500 hover:fill-zinc-900 dark:fill-gray-300 dark:hover:fill-gray-100" />
               </button>
             </div>
           </div>
@@ -120,7 +122,10 @@ export const Modal = (props) => {
         </div>
       </div>
 
-      <div className="modal-background" onClick={onClose}></div>
+      <div
+        className="modal-background"
+        onClick={closeableBackdrop ? onClose : null}
+      ></div>
     </>
   );
 };

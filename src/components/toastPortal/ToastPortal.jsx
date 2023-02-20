@@ -27,6 +27,26 @@ export const ToastPortal = forwardRef((props, ref) => {
 
   const { loaded, portalId } = usePortal("toast", position);
 
+  const addToast = (message, toastObj, mode) => {
+    setToasts((prevToasts) => [
+      ...prevToasts,
+      {
+        id: uuid(),
+        message: message,
+        timer: toastObj?.timer ? toastObj?.timer : 5,
+        isAutoClose: toastObj?.isAutoClose === false ? false : true,
+        // idea: as if isAutoClose equal to false it's a falsy value so we need to check if it's equal to true or not
+        mode: mode ? mode : "success",
+        isVisible: true,
+        animation: toastObj?.animation ? toastObj.animation : "slide",
+        position: position,
+        startTime: Date.now(),
+        remainingTime: toastObj?.timer ? toastObj.timer * 1000 : 5 * 1000,
+        timerId: "",
+      },
+    ]);
+  };
+
   // section: remove toast function
   const removeToast = (id) => {
     setToasts((prevToasts) => {
@@ -57,77 +77,16 @@ export const ToastPortal = forwardRef((props, ref) => {
   // section: useImperativeHandle to expose addMessage function to parent component
   useImperativeHandle(ref, () => ({
     success: (message, toastObj) => {
-      setToasts((prevToasts) => [
-        ...prevToasts,
-        {
-          id: uuid(),
-          message: message,
-          timer: toastObj?.timer ? toastObj?.timer : 5,
-          isAutoClose: toastObj?.isAutoClose === false ? false : true,
-          mode: "success",
-          isVisible: true,
-          animation: toastObj?.animation ? toastObj.animation : "slide",
-          position: position,
-          startTime: Date.now(),
-          remainingTime: toastObj?.timer ? toastObj.timer * 1000 : 5 * 1000,
-          timerId: "",
-        },
-      ]);
+      addToast(message, toastObj, "success");
     },
     info: (message, toastObj) => {
-      setToasts((prevToasts) => [
-        ...prevToasts,
-        {
-          id: uuid(),
-          message: message,
-          timer: toastObj?.timer ? toastObj?.timer : 5,
-          isAutoClose: toastObj?.isAutoClose === false ? false : true,
-          // idea: as if isAutoClose equal to false it's a falsy value so we need to check if it's equal to true or not
-          mode: "info",
-          isVisible: true,
-          animation: toastObj?.animation ? toastObj.animation : "slide",
-          position: position,
-          startTime: Date.now(),
-          remainingTime: toastObj?.timer ? toastObj.timer * 1000 : 5 * 1000,
-          timerId: "",
-        },
-      ]);
+      addToast(message, toastObj, "info");
     },
     warn: (message, toastObj) => {
-      setToasts((prevToasts) => [
-        ...prevToasts,
-        {
-          id: uuid(),
-          message: message,
-          timer: toastObj?.timer ? toastObj?.timer : 5,
-          isAutoClose: toastObj?.isAutoClose === false ? false : true,
-          mode: "warning",
-          isVisible: true,
-          animation: toastObj?.animation ? toastObj.animation : "slide",
-          position: position,
-          startTime: Date.now(),
-          remainingTime: toastObj?.timer ? toastObj.timer * 1000 : 5 * 1000,
-          timerId: "",
-        },
-      ]);
+      addToast(message, toastObj, "warning");
     },
     error: (message, toastObj) => {
-      setToasts((prevToasts) => [
-        ...prevToasts,
-        {
-          id: uuid(),
-          message: message,
-          timer: toastObj?.timer ? toastObj?.timer : 5,
-          isAutoClose: toastObj?.isAutoClose === false ? false : true,
-          mode: "error",
-          isVisible: true,
-          animation: toastObj?.animation ? toastObj.animation : "slide",
-          position: position,
-          startTime: Date.now(),
-          remainingTime: toastObj?.timer ? toastObj.timer * 1000 : 5 * 1000,
-          timerId: "",
-        },
-      ]);
+      addToast(message, toastObj, "error");
     },
     clear: () => {
       setToasts([]);

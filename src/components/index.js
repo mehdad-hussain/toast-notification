@@ -7,5 +7,6 @@ export * from "./btn-solid/BtnSolid";
 export * from "./modal-container/ModalContainer";
 export * from "./toast-container/ToastContainer";
 export * from "./modal/Modal";
+export * from "./render-when/RenderWhen";
 
 // export { Rating, Tooltip, ToastPortal };
