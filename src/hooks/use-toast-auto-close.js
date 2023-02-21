@@ -42,7 +42,7 @@ export const useToastAutoClose = ({
 
     let autoCloseToasts = toasts.filter((toast) => toast.isAutoClose);
 
-    console.log("autoCloseToasts", autoCloseToasts);
+    // console.log("autoCloseToasts", autoCloseToasts);
     if (autoCloseToasts.length > 0) {
       // const toast = autoCloseToasts[autoCloseToasts.length - 1];
       // const id = toasts[0].id;

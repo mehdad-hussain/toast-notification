@@ -1,7 +1,7 @@
 import { useContext, useRef } from "react";
 // prettier-ignore
 import { BtnOutline, ModalContainer, ToastContext, modalAnimation,modalSize, toastAnimation, RenderWhen } from "components";
-import { BtnSolid } from "components/btn-solid/BtnSolid";
+import { BtnSolid } from "components/buttons/btn-solid/BtnSolid";
 
 export const Home = () => {
   const { toast, positionedToast } = useContext(ToastContext);

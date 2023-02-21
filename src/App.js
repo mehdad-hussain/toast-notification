@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 // prettier-ignore
 
-import { BtnSolid, ToastContainer } from "components";
+import { BtnSolid, Nav, ToastContainer } from "components";
 import { useDarkMode, useDocumentTitle } from "hooks";
 import { Home } from "pages";
 
@@ -12,22 +12,9 @@ function App() {
 
   useDocumentTitle("Notification");
 
-  useEffect(() => {
-    if (isDarkMode) {
-      document.body.classList.add("dark");
-      document.body.style.backgroundColor = "#222b3c";
-    } else {
-      document.body.classList.remove("dark");
-      document.body.style.backgroundColor = "#fff";
-    }
-
-    return () => {
-      document.body.classList.remove("dark");
-    };
-  }, [isDarkMode]);
-
   return (
     <>
+      <Nav />
       <div className="w-1/2 h-40 mt-0 ml-auto">
         <p className="mb-4 dark:text-white">
           Current theme: {isDarkMode ? "dark" : "light"}
