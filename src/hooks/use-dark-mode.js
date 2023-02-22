@@ -23,20 +23,6 @@ export function useDarkMode(defaultValue) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isDarkOS]);
 
-  useEffect(() => {
-    if (isDarkMode) {
-      document.body.classList.add("dark");
-      document.body.style.backgroundColor = "#222b3c";
-    } else {
-      document.body.classList.remove("dark");
-      document.body.style.backgroundColor = "#fff";
-    }
-
-    return () => {
-      document.body.classList.remove("dark");
-    };
-  }, [isDarkMode]);
-
   return {
     isDarkMode,
     toggle: () => setDarkMode((prev) => !prev),

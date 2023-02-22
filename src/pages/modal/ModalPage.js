@@ -3,7 +3,7 @@ import { useRef } from "react";
 import { BtnOutline, modalAnimation, ModalContainer, modalSize } from "components";
 import { BtnSolid } from "components/buttons/btn-solid/BtnSolid";
 
-export const Modal = () => {
+export const ModalPage = () => {
   const modalRef = useRef(null);
 
   return (

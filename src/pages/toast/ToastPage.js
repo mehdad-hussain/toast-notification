@@ -1,12 +1,12 @@
 import { useContext } from "react";
 // prettier-ignore
-import { BtnOutline, BtnSolid, toastAnimation, ToastContext } from "components";
+import { BtnOutline, BtnSolid, toastAnimation, ToastContainer, ToastContext } from "components";
 
-export const Toast = () => {
+export const ToastPage = () => {
   const { toast, positionedToast } = useContext(ToastContext);
 
   return (
-    <div className="grid items-center justify-center w-full grid-cols-4 gap-2 mt-20 h-1/2 justify-items-center">
+    <div className="grid items-center justify-center w-full grid-cols-4 lgM:grid-cols-3 mdM:grid-cols-2 smM:grid-cols-1 gap-2 mt-20 h-1/2 justify-items-center">
       <BtnOutline
         onClick={() => {
           toast.current.error(" It's a Error Message", {
