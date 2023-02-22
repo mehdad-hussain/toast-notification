@@ -1,5 +1,7 @@
+import { forwardRef } from "react";
 import { useDropdown } from "./use-dropdown";
-export const DropMenuItem = (props) => {
+
+export const DropMenuItem = forwardRef((props, ref) => {
   const { value, title, children } = props;
   const { selectItem } = useDropdown();
 
@@ -12,4 +14,4 @@ export const DropMenuItem = (props) => {
       {children ? children : <p>{title}</p>}
     </div>
   );
-};
+});

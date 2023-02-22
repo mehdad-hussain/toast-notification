@@ -1,12 +1,8 @@
 import { HoverDropDown } from "components";
-import { DropMenuItem } from "components/dropdowns/DropMenuItem";
-import { useDropdown } from "components/dropdowns/use-dropdown";
 import { useDarkMode } from "hooks";
 
 export const Nav = () => {
-  const { isDarkMode, toggle, enable, disable, reset } = useDarkMode();
-  const { selectedItem, selectItem } = useDropdown();
-  console.log("selectedItem", selectedItem);
+  const { enable, disable, reset } = useDarkMode();
 
   return (
     <>
@@ -104,12 +100,13 @@ export const Nav = () => {
                 </div>
                 {/* make a theme switcher button with 3 options */}
               </div>
-              <HoverDropDown>
-                <DropMenuItem title="Light" value="light">
-                  <button onClick={enable}>Light</button>
-                </DropMenuItem>
-                <DropMenuItem title="Dark" value="dark"></DropMenuItem>
-              </HoverDropDown>
+              <HoverDropDown
+                list={[
+                  { title: "Dark", value: "dark", onClick: enable },
+                  { title: "Light", value: "light", onClick: disable },
+                  { title: "System", value: "reset", onClick: reset },
+                ]}
+              ></HoverDropDown>
               {/* section: Theme switcher */}
               <div className="absolute inset-y-0 right-0 flex items-center pr-16 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <div className="relative ml-3">

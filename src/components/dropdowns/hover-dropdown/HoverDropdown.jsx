@@ -1,11 +1,11 @@
-import { Children, useState } from "react";
+import { useState } from "react";
 import { joinClasses } from "util";
 // import styles from "./HoverDropDown.module.scss";
 
 export const HoverDropDown = (props) => {
   let { list, haveImage, width } = props;
 
-  // const [selectedItem, setSelectedItem] = useState(list[0]);
+  const [selectedItem, setSelectedItem] = useState(list[0]);
 
   haveImage = haveImage === undefined ? true : haveImage;
 
@@ -25,7 +25,7 @@ export const HoverDropDown = (props) => {
       <div className={classes}>
         {/* section: selected option */}
         <div className="flex items-center space-x-2">
-          {/* {haveImage && (
+          {haveImage && (
             <div className="w-4 h-2">
               <img
                 src={selectedItem.img}
@@ -33,25 +33,23 @@ export const HoverDropDown = (props) => {
                 className="object-cover "
               />
             </div>
-          )} */}
-          <h6 className="text-sm font-semibold text-right text-slate-700 dark:text-gray-300">
-            {/* {selectedItem.title} */}
-            name
+          )}
+          <h6 className="text-sm font-semibold text-right text-slate-700 dark:text-gray-300 whitespace-nowrap">
+            {selectedItem?.title}
           </h6>
         </div>
 
         {/* section: dropdown container */}
         <div className={containerClasses}>
-          {/* {list?.map((item, index) => {
+          {list?.map((item, index) => {
             return (
               <button
                 type="button"
                 key={index}
-                onClick={
-                  props.onClick
-                    ? props.onClick
-                    : () => console.log("Button Clicked")
-                }
+                onClick={() => {
+                  setSelectedItem(item);
+                  item?.onClick();
+                }}
                 className="flex items-center w-full space-x-2 border-b border-b-gray-300 last:border-b-0"
               >
                 {haveImage && (
@@ -68,9 +66,7 @@ export const HoverDropDown = (props) => {
                 </p>
               </button>
             );
-          })} */}
-
-          {props.children}
+          })}
         </div>
       </div>
     </>
