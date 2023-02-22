@@ -10,7 +10,7 @@ export const ModalPage = () => {
     <>
       <ModalContainer ref={modalRef} />
 
-      <div className="grid items-center justify-center w-full grid-cols-4 gap-2 mt-20 h-1/2 justify-items-center">
+      <div className="grid items-center justify-center w-full grid-cols-4 gap-2 mt-20 h-1/2 justify-items-center container">
         <BtnSolid
           onClick={() => {
             modalRef.current.openModal({
