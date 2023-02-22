@@ -1,6 +1,5 @@
 import { XMarkIcon } from "assets";
 import { BtnOutline, BtnSolid } from "components";
-import React from "react";
 import { joinClasses } from "util";
 
 export const Modal = (props) => {

@@ -15,6 +15,7 @@ export * from "./use-copy-clipboard";
 export * from "./use-document-title";
 export * from "./use-image-onload";
 export * from "./use-dark-mode";
+export * from "./use-ternary-dark-mode";
 export * from "./use-intersection-observer";
 
 export * from "./use-eventListener";

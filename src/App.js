@@ -1,20 +1,16 @@
-import React from "react";
 // prettier-ignore
-import { Nav, ToastContainer } from "components";
+import { ToastContainer } from "components";
 import { useDocumentTitle } from "hooks";
-import { Home } from "pages";
-
-export const ToastContext = React.createContext();
+import { RouterProvider } from "react-router-dom";
+import { router } from "routing";
 
 function App() {
   useDocumentTitle("Notification");
 
   return (
     <>
-      <Nav />
-
       <ToastContainer>
-        <Home />
+        <RouterProvider router={router} />
       </ToastContainer>
     </>
   );
