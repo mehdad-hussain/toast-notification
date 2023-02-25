@@ -104,7 +104,7 @@ export const Nav = () => {
                       Modal
                     </NavLink>
                     <NavLink
-                      to="/"
+                      to="animation-component"
                       className={({ isActive }) =>
                         joinClasses(
                           isActive
