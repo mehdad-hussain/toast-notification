@@ -30,6 +30,8 @@ const useIsomorphicLayoutEffect =
 //   options?: boolean | AddEventListenerOptions,
 // ): void
 
+// fix: eventListener bugs
+
 export const useEventListener = (eventName, handler, element, options) => {
   // Create a ref that stores handler
   const savedHandler = useRef(handler);
@@ -47,7 +49,7 @@ export const useEventListener = (eventName, handler, element, options) => {
 
     // Create event listener that calls handler function stored in ref
     const eventListener = (event) => savedHandler.current(event);
-    // console.log("eventListener", eventListener);
+    console.log("eventListener", eventListener);
 
     targetElement.addEventListener(eventName, eventListener, options);
 

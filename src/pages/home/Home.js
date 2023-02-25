@@ -1,9 +1,9 @@
-import { useContext, useRef } from "react";
 // prettier-ignore
-import { RenderWhen, ToastContext } from "components";
+import { RenderWhen } from "components";
 
 export const Home = () => {
   const x = 3;
+
   return (
     <>
       <RenderWhen>

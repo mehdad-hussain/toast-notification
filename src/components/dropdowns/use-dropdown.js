@@ -1,4 +1,3 @@
-import { useDarkMode } from "hooks";
 import { useState } from "react";
 
 export const useDropdown = () => {
